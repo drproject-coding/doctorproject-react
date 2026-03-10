@@ -1,0 +1,9 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";function m({children:r,color:a,filled:t,dark:i,dot:s,legend:o,icon:l,closeable:n,onClose:d,className:p=""}){const c=s||o,u=["drp-tag",a&&`drp-tag--${a}`,t&&"drp-tag--filled",i&&"drp-tag--dark",c&&"drp-tag--dot",n&&"drp-tag--closeable",p].filter(Boolean).join(" ");return e.jsxs("span",{className:u,children:[l&&e.jsx("span",{className:"drp-tag__icon",children:l}),r,n&&e.jsx("button",{className:"drp-tag__close",onClick:d,"aria-label":"Remove tag",children:e.jsx("span",{"aria-hidden":"true",children:"×"})})]})}m.__docgenInfo={description:"",methods:[],displayName:"Tag",props:{children:{required:!0,tsType:{name:"ReactNode"},description:""},color:{required:!1,tsType:{name:"union",raw:`| "purple"
+| "mint"
+| "pink"
+| "yellow"
+| "grey"
+| "orange"
+| "light"
+| "teal"
+| "black"`,elements:[{name:"literal",value:'"purple"'},{name:"literal",value:'"mint"'},{name:"literal",value:'"pink"'},{name:"literal",value:'"yellow"'},{name:"literal",value:'"grey"'},{name:"literal",value:'"orange"'},{name:"literal",value:'"light"'},{name:"literal",value:'"teal"'},{name:"literal",value:'"black"'}]},description:""},filled:{required:!1,tsType:{name:"boolean"},description:""},dark:{required:!1,tsType:{name:"boolean"},description:""},dot:{required:!1,tsType:{name:"boolean"},description:""},legend:{required:!1,tsType:{name:"boolean"},description:"Alias for `dot` — show a leading legend dot"},icon:{required:!1,tsType:{name:"ReactNode"},description:"Icon element placed before the label"},closeable:{required:!1,tsType:{name:"boolean"},description:""},onClose:{required:!1,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},className:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'""',computed:!1}}}};export{m as T};

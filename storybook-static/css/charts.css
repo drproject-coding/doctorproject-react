@@ -1,0 +1,332 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — CHARTS & GRAPHS
+   Reusable containers, legends, grids, and donut overlays
+   for Chart.js integration.
+
+   Requires: Chart.js (https://www.chartjs.org/)
+   ============================================================ */
+
+
+/* ──────────────────────────────────────────────
+   CHART CARD
+   Wrapper card for any chart with header + container.
+   ────────────────────────────────────────────── */
+
+.drp-chart-card {
+  background: var(--drp-surface);
+  border: var(--drp-border);
+  box-shadow: var(--drp-shadow-sm);
+  padding: var(--drp-space-6);
+  margin-bottom: var(--drp-space-6);
+}
+
+.drp-chart-card--flat {
+  box-shadow: none;
+}
+
+.drp-chart-card--full {
+  grid-column: 1 / -1;
+}
+
+
+/* ──────────────────────────────────────────────
+   CHART HEADER
+   Title + optional legend/controls row.
+   ────────────────────────────────────────────── */
+
+.drp-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--drp-space-4);
+}
+
+.drp-chart-title {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+  margin: 0;
+}
+
+
+/* ──────────────────────────────────────────────
+   CHART CONTAINER
+   Responsive wrapper for <canvas> elements.
+   Always use position:relative + fixed height
+   with Chart.js responsive:true, maintainAspectRatio:false.
+   ────────────────────────────────────────────── */
+
+.drp-chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.drp-chart-container--sm {
+  height: 220px;
+}
+
+.drp-chart-container--lg {
+  height: 380px;
+}
+
+.drp-chart-container--xl {
+  height: 480px;
+}
+
+.drp-chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ──────────────────────────────────────────────
+   CHART GRID
+   Multi-chart layouts (2-col, 3-col).
+   ────────────────────────────────────────────── */
+
+.drp-chart-grid {
+  display: grid;
+  gap: var(--drp-space-6);
+  margin-bottom: var(--drp-space-6);
+}
+
+.drp-chart-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.drp-chart-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.drp-chart-grid--2-1 {
+  grid-template-columns: 1.5fr 1fr;
+}
+
+
+/* ──────────────────────────────────────────────
+   CHART LEGEND
+   Custom legend with square dots (brutalist).
+   ────────────────────────────────────────────── */
+
+.drp-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--drp-space-4);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-xs);
+  font-weight: var(--drp-weight-medium);
+  color: var(--drp-grey);
+}
+
+.drp-chart-legend--center {
+  justify-content: center;
+}
+
+.drp-chart-legend--bordered {
+  padding-top: var(--drp-space-4);
+  border-top: var(--drp-border-thin);
+  margin-top: var(--drp-space-4);
+}
+
+.drp-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--drp-space-2);
+}
+
+.drp-chart-legend__dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.drp-chart-legend__dot--round {
+  border-radius: 0;
+}
+
+
+/* ──────────────────────────────────────────────
+   DONUT CENTER OVERLAY
+   Absolute-centered text inside doughnut charts.
+   ────────────────────────────────────────────── */
+
+.drp-chart-donut-wrap {
+  position: relative;
+}
+
+.drp-chart-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.drp-chart-donut-value {
+  font-family: var(--drp-font-primary);
+  font-size: 28px;
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.drp-chart-donut-label {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-xs);
+  color: var(--drp-grey);
+  font-weight: var(--drp-weight-regular);
+  margin-top: 4px;
+}
+
+
+/* ──────────────────────────────────────────────
+   STAT CARDS (mini KPI cards above charts)
+   ────────────────────────────────────────────── */
+
+.drp-stat-grid {
+  display: grid;
+  gap: var(--drp-space-4);
+  margin-bottom: var(--drp-space-6);
+}
+
+.drp-stat-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.drp-stat-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.drp-stat-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.drp-stat-grid--auto { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+
+.drp-stat-card {
+  background: var(--drp-surface);
+  border: var(--drp-border-dashed);
+  box-shadow: var(--drp-shadow-sm);
+  padding: var(--drp-space-5);
+}
+
+.drp-stat-card__label {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-xs);
+  font-weight: var(--drp-weight-medium);
+  color: var(--drp-grey);
+  text-transform: uppercase;
+  letter-spacing: var(--drp-tracking-wide);
+  margin-bottom: var(--drp-space-1);
+}
+
+.drp-stat-card__value {
+  font-family: var(--drp-font-primary);
+  font-size: 24px;
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+}
+
+.drp-stat-card__badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: var(--drp-weight-bold);
+  padding: 2px 8px;
+  margin-top: var(--drp-space-2);
+}
+
+.drp-stat-card__badge--up {
+  background: var(--drp-mint-20, rgba(152, 233, 171, 0.2));
+  color: var(--drp-mint, #28a745);
+}
+
+.drp-stat-card__badge--down {
+  background: var(--drp-pink-20, rgba(233, 152, 152, 0.2));
+  color: var(--drp-pink, #dc3545);
+}
+
+
+/* ──────────────────────────────────────────────
+   CHART COLOR PALETTE UTILITIES
+   Quick-apply background colors for legend dots.
+   ────────────────────────────────────────────── */
+
+.drp-chart-color-purple   { background: var(--drp-purple); }
+.drp-chart-color-mint     { background: var(--drp-mint); }
+.drp-chart-color-pink     { background: var(--drp-pink); }
+.drp-chart-color-yellow   { background: var(--drp-yellow); }
+.drp-chart-color-orange   { background: #FF6C01; }
+.drp-chart-color-cyan     { background: #17a2b8; }
+.drp-chart-color-indigo   { background: #6f42c1; }
+.drp-chart-color-teal     { background: #20c997; }
+.drp-chart-color-grey     { background: var(--drp-grey); }
+
+
+/* ──────────────────────────────────────────────
+   DARK MODE
+   ────────────────────────────────────────────── */
+
+body.dark-mode .drp-chart-donut-value {
+  color: var(--drp-cream);
+}
+
+body.dark-mode .drp-stat-card__value {
+  color: var(--drp-cream);
+}
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-chart-grid--2,
+  .drp-chart-grid--3,
+  .drp-chart-grid--2-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .drp-chart-container {
+    height: 260px;
+  }
+
+  .drp-chart-container--lg {
+    height: 300px;
+  }
+
+  .drp-chart-donut-value {
+    font-size: 22px;
+  }
+
+  .drp-stat-grid--3,
+  .drp-stat-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .drp-chart-card {
+    padding: var(--drp-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-chart-container {
+    height: 220px;
+  }
+
+  .drp-chart-container--lg {
+    height: 260px;
+  }
+
+  .drp-chart-donut-value {
+    font-size: 18px;
+  }
+
+  .drp-chart-legend {
+    gap: var(--drp-space-3);
+  }
+
+  .drp-stat-grid--2,
+  .drp-stat-grid--3,
+  .drp-stat-grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .drp-stat-card__value {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,172 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — MODALS & OVERLAYS
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   MODAL / OVERLAY
+   ────────────────────────────────────────────── */
+
+.drp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--drp-z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--drp-space-4);
+}
+
+.drp-overlay[hidden] {
+  display: none;
+}
+
+.drp-modal {
+  background: var(--drp-surface);
+  border: var(--drp-border);
+  box-shadow: var(--drp-shadow-xl);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: var(--drp-z-modal);
+}
+
+.drp-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--drp-space-4) var(--drp-space-6);
+  background: var(--drp-purple);
+  color: #ffffff;
+}
+
+.drp-modal__title {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-lg);
+  font-weight: var(--drp-weight-bold);
+  margin: 0;
+}
+
+.drp-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Visual size 28px, touch target expanded to 44px via negative margin + padding */
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px -8px 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-modal__close:hover {
+  opacity: 1;
+}
+
+.drp-modal__body {
+  padding: var(--drp-space-6);
+}
+
+.drp-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--drp-space-3);
+  padding: var(--drp-space-4) var(--drp-space-6);
+  border-top: var(--drp-border-dotted);
+}
+
+/* ──────────────────────────────────────────────
+   TOOLTIP
+   Hover-reveal text popup.
+   ────────────────────────────────────────────── */
+
+.drp-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.drp-tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--drp-space-2) var(--drp-space-3);
+  background: var(--drp-black);
+  color: var(--drp-white);
+  font-family: var(--drp-font-mono);
+  font-size: var(--drp-text-xs);
+  white-space: nowrap;
+  border: var(--drp-border);
+  margin-bottom: var(--drp-space-2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--drp-duration-fast) var(--drp-ease);
+  z-index: var(--drp-z-tooltip);
+}
+
+.drp-tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--drp-black);
+}
+
+.drp-tooltip:hover .drp-tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — MODALS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-modal {
+    max-width: calc(100vw - 32px);
+    max-height: 85vh;
+  }
+
+  .drp-modal__header {
+    padding: var(--drp-space-3) var(--drp-space-4);
+  }
+
+  .drp-modal__body {
+    padding: var(--drp-space-4);
+  }
+
+  .drp-modal__footer {
+    padding: var(--drp-space-3) var(--drp-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-overlay {
+    padding: var(--drp-space-2);
+  }
+
+  .drp-modal {
+    max-width: 100%;
+    max-height: 90vh;
+  }
+
+  .drp-modal__title {
+    font-size: var(--drp-text-md);
+  }
+
+  .drp-modal__footer {
+    flex-direction: column;
+  }
+
+  .drp-modal__footer .drp-btn {
+    width: 100%;
+  }
+}

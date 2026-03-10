@@ -1,0 +1,137 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — ANIMATIONS
+   Keyframe definitions + utility classes.
+   ============================================================ */
+
+@keyframes drp-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drp-slide-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drp-scale-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes drp-glitch {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes drp-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes drp-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes drp-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ──────────────────────────────────────────────
+   UTILITY CLASSES
+   ────────────────────────────────────────────── */
+
+.drp-anim-slide-up {
+  animation: drp-slide-up var(--drp-duration-normal) var(--drp-ease);
+}
+
+.drp-anim-slide-down {
+  animation: drp-slide-down var(--drp-duration-normal) var(--drp-ease);
+}
+
+.drp-anim-scale-in {
+  animation: drp-scale-in var(--drp-duration-normal) var(--drp-ease);
+}
+
+.drp-anim-glitch {
+  animation: drp-glitch var(--drp-duration-fast) steps(2, end);
+}
+
+.drp-anim-bounce {
+  animation: drp-bounce 1s ease infinite;
+}
+
+.drp-anim-pulse {
+  animation: drp-pulse 2s ease infinite;
+}
+
+.drp-anim-shake {
+  animation: drp-shake var(--drp-duration-fast) ease infinite;
+}
+
+/* ──────────────────────────────────────────────
+   PREFERS-REDUCED-MOTION
+   ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .drp-anim-slide-up,
+  .drp-anim-slide-down,
+  .drp-anim-scale-in,
+  .drp-anim-glitch,
+  .drp-anim-bounce,
+  .drp-anim-pulse,
+  .drp-anim-shake {
+    animation: none !important;
+  }
+}

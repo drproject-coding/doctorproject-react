@@ -1,0 +1,71 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — MEDIA
+   Avatars, carousels, and media display components.
+   ============================================================ */
+
+
+/* ──────────────────────────────────────────────
+   AVATAR
+   ────────────────────────────────────────────── */
+
+.drp-avatar {
+  width: 64px;
+  height: 64px;
+  border: var(--drp-border);
+  object-fit: cover;
+  display: inline-block;
+}
+
+.drp-avatar--sm {
+  width: 40px;
+  height: 40px;
+}
+
+.drp-avatar--lg {
+  width: 96px;
+  height: 96px;
+}
+
+
+/* ──────────────────────────────────────────────
+   CAROUSEL
+   ────────────────────────────────────────────── */
+
+.drp-carousel {
+  position: relative;
+  overflow: hidden;
+  border: var(--drp-border);
+}
+
+.drp-carousel__track {
+  display: flex;
+  transition: transform var(--drp-duration-slow) var(--drp-ease);
+}
+
+.drp-carousel__slide {
+  min-width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.drp-carousel__nav {
+  position: absolute;
+  bottom: var(--drp-space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--drp-space-2);
+}
+
+.drp-carousel__dot {
+  width: 12px;
+  height: 12px;
+  border: var(--drp-border);
+  background: var(--drp-white);
+  cursor: pointer;
+  padding: 0;
+}
+
+.drp-carousel__dot.active {
+  background: var(--drp-purple);
+}

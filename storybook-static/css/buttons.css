@@ -1,0 +1,324 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — BUTTONS
+   All button variants matching DoctorProject specification.
+
+   VARIANTS:
+     .drp-btn              Base (white bg, black border)
+     .drp-btn--primary     Purple filled
+     .drp-btn--outline     White/transparent with border
+     .drp-btn--ghost       No border, no bg (text only)
+     .drp-btn--danger      Red filled
+     .drp-btn--dark        Black filled, white text
+
+   SIZES:
+     (default)             Standard (padding 8px 20px)
+     .drp-btn--sm          Small (padding 6px 14px, 12px font)
+     .drp-btn--lg          Large (padding 12px 28px, 16px font)
+
+   MODIFIERS:
+     .drp-btn--icon        Icon-only button (square)
+     .drp-btn--icon-sm     Small icon-only
+     .drp-btn--block       Full width
+     disabled              Dimmed, no pointer
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   BASE
+   ────────────────────────────────────────────── */
+
+.drp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--drp-space-2);
+  padding: 8px 20px;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--drp-tracking-wide);
+  color: var(--drp-black);
+  background: var(--drp-white);
+  border: var(--drp-border);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-sm);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform var(--drp-duration-fast) var(--drp-ease),
+    box-shadow var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: var(--drp-shadow-xs);
+}
+
+.drp-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+.drp-btn:disabled,
+.drp-btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.drp-btn:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: PRIMARY (purple filled)
+   ────────────────────────────────────────────── */
+
+.drp-btn--primary {
+  background: var(--drp-purple);
+  color: #ffffff;
+}
+
+.drp-btn--primary:hover {
+  background: var(--drp-purple-hover);
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: OUTLINE (transparent bg)
+   ────────────────────────────────────────────── */
+
+.drp-btn--outline {
+  background: transparent;
+  color: var(--drp-black);
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: GHOST (no border, no shadow)
+   ────────────────────────────────────────────── */
+
+.drp-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--drp-black);
+}
+
+.drp-btn--ghost:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.drp-btn--ghost:active {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.drp-btn--ghost.drp-btn--purple {
+  color: var(--drp-purple);
+}
+
+.drp-btn--ghost.drp-btn--purple:hover {
+  background: var(--drp-purple-20);
+}
+
+/* Ghost with visible border (DP-style) */
+.drp-btn--ghost-bordered {
+  background: transparent;
+  color: var(--drp-purple);
+  border-color: var(--drp-purple);
+  box-shadow: none;
+}
+
+.drp-btn--ghost-bordered:hover {
+  background: var(--drp-purple);
+  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--drp-shadow-md);
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: DANGER (red)
+   ────────────────────────────────────────────── */
+
+.drp-btn--danger {
+  background: var(--drp-pink);
+  color: var(--drp-error-dark);
+}
+
+.drp-btn--danger:hover {
+  background: var(--drp-pink-80);
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: SECONDARY (orange)
+   ────────────────────────────────────────────── */
+
+.drp-btn--secondary {
+  background: var(--drp-orange);
+  color: #ffffff;
+}
+
+.drp-btn--secondary:hover {
+  background: var(--drp-orange-dark);
+}
+
+/* ──────────────────────────────────────────────
+   VARIANT: DARK (black filled)
+   ────────────────────────────────────────────── */
+
+.drp-btn--dark {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+body.dark-mode .drp-btn--dark {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* ──────────────────────────────────────────────
+   SIZES
+   ────────────────────────────────────────────── */
+
+.drp-btn--sm {
+  padding: 6px 14px;
+  font-size: var(--drp-text-sm);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-xs);
+}
+
+.drp-btn--sm:hover {
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 1);
+}
+
+.drp-btn--lg {
+  padding: 14px 32px;
+  font-size: var(--drp-text-lg);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-md);
+}
+
+.drp-btn--lg:hover {
+  box-shadow: var(--drp-shadow-sm);
+}
+
+/* ──────────────────────────────────────────────
+   ICON BUTTONS
+   Square aspect, centered icon.
+   ────────────────────────────────────────────── */
+
+.drp-btn--icon {
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.drp-btn--icon.drp-btn--sm {
+  /* Small icon button — min 44px touch target via padding, visual stays compact */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.drp-btn--icon.drp-btn--lg {
+  padding: 12px;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* ──────────────────────────────────────────────
+   FULL WIDTH
+   ────────────────────────────────────────────── */
+
+.drp-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+/* ──────────────────────────────────────────────
+   BUTTON GROUP
+   ────────────────────────────────────────────── */
+
+.drp-btn-group {
+  display: inline-flex;
+  gap: 0;
+}
+
+.drp-btn-group .drp-btn {
+  border-radius: 0;
+}
+
+.drp-btn-group .drp-btn:first-child {
+  border-radius: 0;
+}
+
+.drp-btn-group .drp-btn:last-child {
+  border-radius: 0;
+}
+
+.drp-btn-group .drp-btn + .drp-btn {
+  margin-left: -2px;
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE
+   ────────────────────────────────────────────── */
+
+body.dark-mode .drp-btn {
+  background: var(--drp-surface);
+  color: var(--drp-black);
+}
+
+body.dark-mode .drp-btn--primary {
+  background: var(--drp-purple);
+  color: #ffffff;
+}
+
+body.dark-mode .drp-btn--outline {
+  background: transparent;
+}
+
+body.dark-mode .drp-btn--ghost {
+  color: var(--drp-black);
+}
+
+body.dark-mode .drp-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — BUTTONS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-btn-group {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-btn {
+    padding: 10px 16px;
+    font-size: var(--drp-text-sm);
+  }
+
+  .drp-btn--lg {
+    padding: 12px 20px;
+    font-size: var(--drp-text-md);
+  }
+
+  .drp-btn-group {
+    width: 100%;
+  }
+
+  .drp-btn-group .drp-btn {
+    flex: 1;
+  }
+}

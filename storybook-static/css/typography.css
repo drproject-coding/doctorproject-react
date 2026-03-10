@@ -1,0 +1,304 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — TYPOGRAPHY
+   @font-face declarations + heading/text utility classes.
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   FONT FACES
+   Visby (primary brand font) + Roboto Flex (fallback)
+   Defined ONCE here — do not redeclare elsewhere.
+   ────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("../fonts/RobotoFlex-VariableFont.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url("../fonts/VisbyRegular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url("../fonts/VisbyMedium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url("../fonts/VisbySemibold.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url("../fonts/VisbyBold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Visby";
+  src: url("../fonts/VisbyHeavy.otf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* ──────────────────────────────────────────────
+   HEADINGS
+   Roboto Flex, bold weight, black.
+   Inverted variant: white text on black highlight.
+   ────────────────────────────────────────────── */
+
+.drp-h1,
+.drp-h2,
+.drp-h3,
+.drp-h4,
+.drp-h5,
+.drp-h6 {
+  font-family: var(--drp-font-primary);
+  font-weight: var(--drp-weight-bold);
+  line-height: var(--drp-leading-tight);
+  letter-spacing: var(--drp-tracking-tight);
+  color: var(--drp-black);
+  margin: 0;
+}
+
+.drp-h1 {
+  font-size: var(--drp-text-h1);
+}
+.drp-h2 {
+  font-size: var(--drp-text-h2);
+}
+.drp-h3 {
+  font-size: var(--drp-text-h3);
+}
+.drp-h4 {
+  font-size: var(--drp-text-h4);
+}
+.drp-h5 {
+  font-size: var(--drp-text-h5);
+}
+.drp-h6 {
+  font-size: var(--drp-text-h6);
+}
+
+/* Inverted headings (white on black highlight) */
+.drp-h1--inv,
+.drp-h2--inv,
+.drp-h3--inv,
+.drp-h4--inv,
+.drp-h5--inv,
+.drp-h6--inv {
+  font-family: var(--drp-font-primary);
+  font-weight: var(--drp-weight-bold);
+  line-height: var(--drp-leading-tight);
+  letter-spacing: var(--drp-tracking-tight);
+  color: #ffffff;
+  background: #000000;
+  display: inline;
+  padding: 0 4px;
+  margin: 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.drp-h1--inv {
+  font-size: var(--drp-text-h1);
+}
+.drp-h2--inv {
+  font-size: var(--drp-text-h2);
+}
+.drp-h3--inv {
+  font-size: var(--drp-text-h3);
+}
+.drp-h4--inv {
+  font-size: var(--drp-text-h4);
+}
+.drp-h5--inv {
+  font-size: var(--drp-text-h5);
+}
+.drp-h6--inv {
+  font-size: var(--drp-text-h6);
+}
+
+/* ──────────────────────────────────────────────
+   DISPLAY HEADINGS
+   Extra large for hero/splash usage.
+   ────────────────────────────────────────────── */
+
+.drp-display-xl {
+  font-family: var(--drp-font-primary);
+  font-size: 4.5rem;
+  font-weight: var(--drp-weight-heavy);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--drp-black);
+  margin: 0;
+}
+
+.drp-display-lg {
+  font-family: var(--drp-font-primary);
+  font-size: 3.5rem;
+  font-weight: var(--drp-weight-heavy);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--drp-black);
+  margin: 0;
+}
+
+.drp-display-md {
+  font-family: var(--drp-font-primary);
+  font-size: 2.5rem;
+  font-weight: var(--drp-weight-heavy);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--drp-black);
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────
+   TEXT LABELS
+   For buttons, form fields, captions.
+   Three sizes: sm (12px), md (14px), lg (16px)
+   Three weights per size.
+   ────────────────────────────────────────────── */
+
+.drp-text {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-regular);
+  line-height: var(--drp-leading-normal);
+  color: var(--drp-black);
+}
+
+.drp-text--xs {
+  font-size: var(--drp-text-xs, 11px);
+}
+.drp-text--sm {
+  font-size: var(--drp-text-sm);
+}
+.drp-text--lg {
+  font-size: var(--drp-text-lg);
+}
+
+.drp-text--medium {
+  font-weight: var(--drp-weight-medium);
+}
+.drp-text--semibold {
+  font-weight: var(--drp-weight-semibold);
+}
+.drp-text--bold {
+  font-weight: var(--drp-weight-bold);
+}
+
+/* Text colors */
+.drp-text--muted {
+  color: var(--drp-grey);
+}
+.drp-text--purple {
+  color: var(--drp-purple);
+}
+.drp-text--mint {
+  color: var(--drp-mint);
+}
+.drp-text--pink {
+  color: var(--drp-pink);
+}
+.drp-text--yellow {
+  color: var(--drp-yellow);
+}
+.drp-text--error {
+  color: var(--drp-error-dark);
+}
+.drp-text--success {
+  color: var(--drp-success-dark);
+}
+
+/* Inverted text (white on black) */
+.drp-text--inv {
+  color: #ffffff;
+  background: #000000;
+  display: inline;
+  padding: 0 3px;
+}
+
+/* Inverted text 50% opacity */
+.drp-text--inv-50 {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline;
+  padding: 0 3px;
+}
+
+/* ──────────────────────────────────────────────
+   LABEL
+   For form field labels, section titles.
+   Uppercase, wide tracking.
+   ────────────────────────────────────────────── */
+
+.drp-label {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-xs);
+  font-weight: var(--drp-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--drp-tracking-caps);
+  color: var(--drp-grey);
+  margin: 0;
+}
+
+.drp-label--purple {
+  color: var(--drp-purple);
+}
+.drp-label--inv {
+  color: #ffffff;
+  background: #000000;
+  display: inline;
+  padding: 1px 4px;
+}
+
+/* ──────────────────────────────────────────────
+   BODY TEXT SIZES
+   ────────────────────────────────────────────── */
+
+.drp-body-lg {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-lg);
+  line-height: var(--drp-leading-loose);
+  color: var(--drp-black);
+}
+
+.drp-body-md {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  line-height: var(--drp-leading-normal);
+  color: var(--drp-black);
+}
+
+.drp-body-sm {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  line-height: var(--drp-leading-normal);
+  color: var(--drp-black);
+}
+
+/* ──────────────────────────────────────────────
+   CAPTION
+   Monospace, small, uppercase — for metadata.
+   ────────────────────────────────────────────── */
+
+.drp-caption {
+  font-family: var(--drp-font-mono);
+  font-size: var(--drp-text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--drp-tracking-widest);
+  color: var(--drp-text-muted);
+}

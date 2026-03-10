@@ -1,0 +1,515 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — FORMS
+   Inputs, selects, textareas, checkboxes, radios, switches.
+   Matches DoctorProject "Padded Inputs" + "General Controls" specs.
+
+   INPUTS:
+     .drp-field             Wrapper (label + input)
+     .drp-field__label      Field label (above input)
+     .drp-input             Text input / textarea
+     .drp-input--error      Error state (pink border)
+     .drp-input--success    Success state (mint border)
+     .drp-select            Select dropdown
+
+   CONTROLS:
+     .drp-checkbox          Checkbox
+     .drp-radio             Radio button
+     .drp-switch            Toggle switch
+
+   COUNTER:
+     .drp-counter           Number input with +/- buttons
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   FIELD WRAPPER
+   Vertical stack: label → input
+   ────────────────────────────────────────────── */
+
+.drp-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--drp-space-1);
+}
+
+.drp-field__label {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-semibold);
+  color: var(--drp-grey);
+  text-transform: uppercase;
+  letter-spacing: var(--drp-tracking-wide);
+}
+
+/* ──────────────────────────────────────────────
+   TEXT INPUT
+   ────────────────────────────────────────────── */
+
+.drp-input {
+  padding: 10px 14px;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-regular);
+  color: var(--drp-black);
+  background: var(--drp-white);
+  border: var(--drp-border);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-sm);
+  outline: none;
+  transition:
+    border-color var(--drp-duration-fast) var(--drp-ease),
+    box-shadow var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-input::placeholder {
+  color: var(--drp-grey-85);
+  font-weight: var(--drp-weight-regular);
+}
+
+.drp-input:focus {
+  border-color: var(--drp-purple);
+  box-shadow: 3px 3px 0 0 var(--drp-purple);
+  background: #f5f0ff;
+}
+
+.drp-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--drp-cream);
+}
+
+/* Error state */
+.drp-input--error {
+  border-color: var(--drp-pink);
+  background: #fff0f0;
+}
+
+.drp-input--error:focus {
+  box-shadow: 3px 3px 0 0 var(--drp-pink);
+}
+
+/* Success state */
+.drp-input--success {
+  border-color: var(--drp-mint);
+  background: #f0fff0;
+}
+
+.drp-input--success:focus {
+  box-shadow: 3px 3px 0 0 var(--drp-mint);
+}
+
+/* Validation icons (position inside input) */
+.drp-field--has-icon {
+  position: relative;
+}
+
+.drp-field--has-icon .drp-input {
+  padding-right: 40px;
+}
+
+.drp-field__icon {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────
+   TEXTAREA
+   ────────────────────────────────────────────── */
+
+textarea.drp-input {
+  min-height: 100px;
+  resize: vertical;
+  line-height: var(--drp-leading-normal);
+}
+
+/* ──────────────────────────────────────────────
+   SELECT
+   ────────────────────────────────────────────── */
+
+.drp-select {
+  padding: 10px 38px 10px 14px;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-regular);
+  color: var(--drp-black);
+  background: var(--drp-white);
+  border: var(--drp-border);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-sm);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23631DED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition:
+    border-color var(--drp-duration-fast) var(--drp-ease),
+    box-shadow var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-select:focus {
+  border-color: var(--drp-purple);
+  box-shadow: 3px 3px 0 0 var(--drp-purple);
+}
+
+.drp-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Select — Error state */
+.drp-select--error {
+  border-color: var(--drp-pink);
+  background-color: #fff0f0;
+}
+
+.drp-select--error:focus {
+  box-shadow: 3px 3px 0 0 var(--drp-pink);
+}
+
+/* Select — Success state */
+.drp-select--success {
+  border-color: var(--drp-mint);
+  background-color: #f0fff0;
+}
+
+.drp-select--success:focus {
+  box-shadow: 3px 3px 0 0 var(--drp-mint);
+}
+
+/* ──────────────────────────────────────────────
+   CHECKBOX
+   Custom checkbox matching DoctorProject spec.
+   Green check, square, bordered.
+   ────────────────────────────────────────────── */
+
+.drp-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--drp-space-2);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+}
+
+.drp-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: var(--drp-border);
+  border-radius: 0;
+  background: var(--drp-white);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-checkbox input[type="checkbox"]:checked {
+  background: var(--drp-mint);
+  border-color: var(--drp-black);
+}
+
+.drp-checkbox input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.drp-checkbox input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
+/* Dark variant */
+.drp-checkbox--dark input[type="checkbox"] {
+  background: #000000;
+  border-color: #000000;
+}
+
+.drp-checkbox--dark input[type="checkbox"]:checked {
+  background: var(--drp-mint);
+}
+
+/* ──────────────────────────────────────────────
+   RADIO
+   Circular, colored center dot.
+   ────────────────────────────────────────────── */
+
+.drp-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--drp-space-2);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+}
+
+.drp-radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: var(--drp-border);
+  border-radius: 0;
+  background: var(--drp-white);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-radio input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  background: var(--drp-mint);
+  transform: translate(-50%, -50%);
+}
+
+/* Color variants */
+.drp-radio--pink input[type="radio"]:checked::after {
+  background: var(--drp-pink);
+}
+.drp-radio--purple input[type="radio"]:checked::after {
+  background: var(--drp-purple);
+}
+
+/* Dark variant */
+.drp-radio--dark {
+  background: #000000;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 0;
+}
+
+.drp-radio--dark input[type="radio"] {
+  border-color: #ffffff;
+  background: transparent;
+}
+
+.drp-radio input[type="radio"]:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
+/* Error variant */
+.drp-radio--error input[type="radio"] {
+  border-color: var(--drp-pink);
+}
+
+.drp-radio--error {
+  color: var(--drp-error-dark);
+}
+
+/* ──────────────────────────────────────────────
+   SWITCH (TOGGLE)
+   Purple track, black knob.
+   ────────────────────────────────────────────── */
+
+.drp-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--drp-space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.drp-switch__track {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border: var(--drp-border);
+  border-radius: 0;
+  background: var(--drp-purple-20);
+  transition: background var(--drp-duration-normal) var(--drp-ease);
+}
+
+.drp-switch__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--drp-purple);
+  border: 1px solid var(--drp-black);
+  border-radius: 0;
+  transition: transform var(--drp-duration-normal) var(--drp-ease);
+}
+
+.drp-switch input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.drp-switch input[type="checkbox"]:checked + .drp-switch__track {
+  background: var(--drp-purple-20);
+}
+
+.drp-switch
+  input[type="checkbox"]:checked
+  + .drp-switch__track
+  .drp-switch__knob {
+  transform: translateX(18px);
+  background: #000000;
+}
+
+.drp-switch input[type="checkbox"]:focus-visible + .drp-switch__track {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
+/* ──────────────────────────────────────────────
+   COUNTER INPUT
+   Number with +/- controls.
+   ────────────────────────────────────────────── */
+
+.drp-counter {
+  display: inline-flex;
+  align-items: center;
+  border: var(--drp-border);
+  border-radius: 0;
+  box-shadow: var(--drp-shadow-sm);
+  overflow: hidden;
+  background: var(--drp-white);
+}
+
+.drp-counter__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: var(--drp-weight-bold);
+  cursor: pointer;
+  color: var(--drp-black);
+  transition: background var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-counter__btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.drp-counter__value {
+  width: 40px;
+  text-align: center;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-md);
+  font-weight: var(--drp-weight-bold);
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--drp-black);
+  -moz-appearance: textfield;
+}
+
+.drp-counter__value::-webkit-inner-spin-button,
+.drp-counter__value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────
+   FORM LAYOUT HELPERS
+   ────────────────────────────────────────────── */
+
+.drp-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--drp-space-4);
+}
+
+.drp-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--drp-space-4);
+}
+
+.drp-form-actions {
+  display: flex;
+  gap: var(--drp-space-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ──────────────────────────────────────────────
+   DARK MODE
+   ────────────────────────────────────────────── */
+
+body.dark-mode .drp-input,
+body.dark-mode .drp-select {
+  background: #1a1a1a;
+  color: #f2f2f2;
+}
+
+body.dark-mode .drp-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .drp-select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23FFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .drp-field__label {
+  color: var(--drp-grey);
+}
+
+body.dark-mode .drp-counter {
+  background: #1a1a1a;
+}
+
+body.dark-mode .drp-label--inv {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — FORMS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .drp-form-group label {
+    font-size: var(--drp-text-sm);
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-input,
+  .drp-select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  .drp-form-group {
+    margin-bottom: var(--drp-space-3);
+  }
+}

@@ -1,0 +1,20 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";function r({image:p,imageLabel:c,imageColor:m="var(--drp-purple)",stat:u,statLabel:g,title:f,description:C,className:y=""}){return e.jsxs("div",{className:y,style:{border:"3px solid var(--drp-black)",background:"var(--drp-surface)",overflow:"hidden"},children:[e.jsx("div",{style:{height:"200px",background:m,borderBottom:"2px solid var(--drp-black)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"var(--drp-font-primary)",fontSize:"2rem",fontWeight:800,color:"#FFFFFF"},children:p||c}),e.jsxs("div",{style:{padding:"var(--drp-space-6)"},children:[e.jsx("p",{style:{fontFamily:"var(--drp-font-primary)",fontSize:"2.5rem",fontWeight:800,color:"var(--drp-orange)",marginBottom:"8px"},children:u}),e.jsx("p",{style:{fontSize:"13px",marginBottom:"16px"},children:g}),e.jsx("h3",{style:{fontFamily:"var(--drp-font-primary)",fontSize:"18px",fontWeight:700,marginBottom:"8px"},children:f}),e.jsx("p",{style:{fontSize:"13px",color:"#666",lineHeight:1.6},children:C})]})]})}r.__docgenInfo={description:"",methods:[],displayName:"CaseCard",props:{image:{required:!1,tsType:{name:"ReactNode"},description:""},imageLabel:{required:!1,tsType:{name:"string"},description:""},imageColor:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'"var(--drp-purple)"',computed:!1}},stat:{required:!0,tsType:{name:"string"},description:""},statLabel:{required:!0,tsType:{name:"string"},description:""},title:{required:!0,tsType:{name:"string"},description:""},description:{required:!0,tsType:{name:"string"},description:""},className:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'""',computed:!1}}}};const v={title:"Composites/CaseCard",component:r,tags:["autodocs"]},a={args:{imageLabel:"FASHION",imageColor:"var(--drp-purple)",stat:"+400%",statLabel:"Conversion Rate Increase",title:"Global Fashion Brand",description:"Unified product data across 50+ markets. Reduced time-to-market from 3 weeks to 2 days."}},t={render:()=>e.jsxs("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:"16px"},children:[e.jsx(r,{imageLabel:"FASHION",imageColor:"var(--drp-purple)",stat:"+400%",statLabel:"Conversion Rate Increase",title:"Global Fashion Brand",description:"Unified product data across 50+ markets."}),e.jsx(r,{imageLabel:"ELECTRONICS",imageColor:"var(--drp-orange)",stat:"+250%",statLabel:"Revenue Growth",title:"Tech Retailer",description:"Enriched 50,000 SKUs with rich content."}),e.jsx(r,{imageLabel:"HEALTHCARE",imageColor:"#00AA00",stat:"+180%",statLabel:"Search Visibility",title:"Medical Supplies Co.",description:"Structured product data for SEO."})]})};var i,s,o;a.parameters={...a.parameters,docs:{...(i=a.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    imageLabel: "FASHION",
+    imageColor: "var(--drp-purple)",
+    stat: "+400%",
+    statLabel: "Conversion Rate Increase",
+    title: "Global Fashion Brand",
+    description: "Unified product data across 50+ markets. Reduced time-to-market from 3 weeks to 2 days."
+  }
+}`,...(o=(s=a.parameters)==null?void 0:s.docs)==null?void 0:o.source}}};var n,d,l;t.parameters={...t.parameters,docs:{...(n=t.parameters)==null?void 0:n.docs,source:{originalSource:`{
+  render: () => <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "16px"
+  }}>
+      <CaseCard imageLabel="FASHION" imageColor="var(--drp-purple)" stat="+400%" statLabel="Conversion Rate Increase" title="Global Fashion Brand" description="Unified product data across 50+ markets." />
+      <CaseCard imageLabel="ELECTRONICS" imageColor="var(--drp-orange)" stat="+250%" statLabel="Revenue Growth" title="Tech Retailer" description="Enriched 50,000 SKUs with rich content." />
+      <CaseCard imageLabel="HEALTHCARE" imageColor="#00AA00" stat="+180%" statLabel="Search Visibility" title="Medical Supplies Co." description="Structured product data for SEO." />
+    </div>
+}`,...(l=(d=t.parameters)==null?void 0:d.docs)==null?void 0:l.source}}};const b=["Default","CaseStudyRow"];export{t as CaseStudyRow,a as Default,b as __namedExportsOrder,v as default};

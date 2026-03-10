@@ -1,0 +1,144 @@
+/* ============================================================
+   DOCTORPROJECT DESIGN SYSTEM — PAGINATION
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   PAGINATION — CENTERED NUMBERS
+   ────────────────────────────────────────────── */
+
+.drp-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: var(--drp-border);
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--drp-white);
+}
+
+.drp-pagination__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  border-right: var(--drp-border);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--drp-black);
+  transition: background var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-pagination__btn:last-child {
+  border-right: none;
+  border-left: var(--drp-border);
+}
+
+.drp-pagination__btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.drp-pagination__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.drp-pagination__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 4px;
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-pagination__page:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.drp-pagination__page--active,
+.drp-pagination__page.active {
+  background: var(--drp-purple);
+  color: #ffffff;
+}
+
+.drp-pagination__info {
+  padding: 0 var(--drp-space-3);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+  white-space: nowrap;
+}
+
+/* Dark variant */
+.drp-pagination--dark {
+  background: #000000;
+  border-color: #ffffff;
+}
+
+.drp-pagination--dark .drp-pagination__btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.drp-pagination--dark .drp-pagination__page {
+  color: #ffffff;
+}
+
+.drp-pagination--dark .drp-pagination__page--active {
+  background: var(--drp-purple);
+}
+
+.drp-pagination--dark .drp-pagination__info {
+  color: #ffffff;
+}
+
+/* Transparent variant (no outer border) */
+.drp-pagination--transparent {
+  border: none;
+  background: transparent;
+  gap: var(--drp-space-1);
+}
+
+.drp-pagination--transparent .drp-pagination__btn {
+  border: var(--drp-border);
+  border-radius: 0;
+}
+
+.drp-pagination--transparent .drp-pagination__page {
+  border-radius: 0;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — PAGINATION
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-pagination__btn {
+    width: 32px;
+    height: 32px;
+    font-size: var(--drp-text-xs);
+  }
+
+  .drp-pagination__btn--nav {
+    padding: 0 8px;
+  }
+}
