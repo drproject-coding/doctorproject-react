@@ -625,8 +625,8 @@ const V2Content: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
                       className="drp-text drp-text--sm drp-text--bold"
                       style={{
                         color: t.neg
-                          ? "var(--drp-error)"
-                          : "var(--drp-success)",
+                          ? "var(--drp-error-dark)"
+                          : "var(--drp-success-dark)",
                       }}
                     >
                       {t.amount}

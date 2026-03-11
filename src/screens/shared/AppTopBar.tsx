@@ -3,9 +3,13 @@ import { Pictogram } from "../../components/Pictogram/Pictogram";
 
 export interface AppTopBarProps {
   title: string;
+  notificationCount?: number;
 }
 
-export const AppTopBar: React.FC<AppTopBarProps> = ({ title }) => (
+export const AppTopBar: React.FC<AppTopBarProps> = ({
+  title,
+  notificationCount,
+}) => (
   <header className="topbar">
     <div className="topbar-left">
       <h1 className="topbar-title">{title}</h1>
@@ -27,7 +31,14 @@ export const AppTopBar: React.FC<AppTopBarProps> = ({ title }) => (
           />
         </svg>
       </button>
-      <button className="topbar-icon-btn" aria-label="Notifications">
+      <button
+        className="topbar-icon-btn"
+        aria-label={
+          notificationCount
+            ? `Notifications (${notificationCount} unread)`
+            : "Notifications"
+        }
+      >
         <Pictogram name="Attention" size={20} aria-hidden={true} />
       </button>
       <button className="topbar-apps-btn">

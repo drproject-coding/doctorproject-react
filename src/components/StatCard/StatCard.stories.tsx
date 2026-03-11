@@ -5,6 +5,18 @@ const meta: Meta<typeof StatCard> = {
   title: "Composites/StatCard",
   component: StatCard,
   tags: ["autodocs"],
+  argTypes: {
+    value: {
+      control: "text",
+      description:
+        "Primary metric displayed in large type — use concise formatted values like '73%', '3x', or '$1.2M'.",
+    },
+    label: {
+      control: "text",
+      description:
+        "Short descriptor beneath the value — phrase as an outcome or benefit (e.g. 'Higher Conversion') rather than a raw metric name.",
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof StatCard>;

@@ -6,12 +6,23 @@ const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   tags: ["autodocs"],
   argTypes: {
-    value: { control: { type: "range", min: 0, max: 100 } },
+    value: {
+      control: { type: "range", min: 0, max: 100 },
+      description:
+        "Completion percentage from 0–100 — drives the filled portion of the bar.",
+    },
     color: {
       control: "select",
       options: [undefined, "mint", "pink", "yellow", "grey"],
+      description:
+        "Fill color — use 'mint' for healthy/complete, 'pink' for critical/over-limit, 'yellow' for warning states, 'grey' for neutral.",
     },
-    size: { control: "select", options: [undefined, "sm", "lg"] },
+    size: {
+      control: "select",
+      options: [undefined, "sm", "lg"],
+      description:
+        "Bar height — use 'sm' in dense data tables, the default for most cards, 'lg' as a standalone metric on dashboards.",
+    },
   },
 };
 export default meta;

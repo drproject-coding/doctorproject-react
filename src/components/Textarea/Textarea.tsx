@@ -6,6 +6,18 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
   success?: boolean;
 }
 
+/**
+ * Multi-line text input for free-form content such as clinical notes or messages — mirrors `Input` API with `label`, `error`, and `success` states, and accepts all native `<textarea>` attributes.
+ * @example
+ * <Textarea
+ *   label="Clinical notes"
+ *   placeholder="Describe symptoms, observations, and treatment plan…"
+ *   rows={6}
+ *   value={notes}
+ *   onChange={(e) => setNotes(e.target.value)}
+ *   error={notesError}
+ * />
+ */
 export function Textarea({
   label,
   error,

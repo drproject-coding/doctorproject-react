@@ -13,6 +13,19 @@ export interface TabsProps {
   className?: string;
 }
 
+/**
+ * Keyboard-accessible tab bar for switching between content panels — manage active state externally via `activeKey`/`onChange` for controlled use, or let it self-manage for simple cases.
+ * @example
+ * <Tabs
+ *   items={[
+ *     { key: "overview", label: "Overview" },
+ *     { key: "history", label: "Medical History" },
+ *     { key: "billing", label: "Billing" },
+ *   ]}
+ *   activeKey={activeTab}
+ *   onChange={setActiveTab}
+ * />
+ */
 export function Tabs({
   items,
   activeKey,

@@ -12,6 +12,14 @@ export interface AvatarProps {
   className?: string;
 }
 
+/**
+ * Displays a user's profile image or fallback initials — use `src` when a photo is available, `initials` as a fallback, and always provide `aria-label` on initials-only variants.
+ * @example
+ * // Photo avatar
+ * <Avatar src="/avatars/dr-chen.jpg" alt="Dr. Sarah Chen" size="lg" />
+ * // Initials fallback
+ * <Avatar initials="SC" size="sm" aria-label="Dr. Sarah Chen" />
+ */
 export function Avatar({
   src,
   alt = "",

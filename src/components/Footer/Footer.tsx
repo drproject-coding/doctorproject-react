@@ -27,7 +27,7 @@ export function Footer({
       className={className}
       style={{
         background: "var(--drp-black)",
-        color: "#FFFFFF",
+        color: "var(--drp-text-inverse)",
         padding: "var(--drp-space-16, 64px) 0",
         borderTop: "3px solid var(--drp-purple)",
       }}
@@ -52,7 +52,15 @@ export function Footer({
               {brand}
             </p>
             {tagline && (
-              <p style={{ fontSize: "13px", opacity: 0.7, maxWidth: "300px" }}>
+              <p
+                style={{
+                  fontFamily: "var(--drp-font-primary)",
+                  fontSize: "14px",
+                  color: "var(--drp-text-muted)",
+                  maxWidth: "300px",
+                  lineHeight: "var(--drp-leading-body, 1.4)",
+                }}
+              >
                 {tagline}
               </p>
             )}
@@ -85,11 +93,10 @@ export function Footer({
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      className="drp-footer__link"
                       style={{
-                        color: "#FFFFFF",
-                        textDecoration: "none",
-                        fontSize: "13px",
-                        opacity: 0.7,
+                        color: "var(--drp-text-secondary)",
+                        fontSize: "14px",
                       }}
                     >
                       {link.label}
@@ -105,7 +112,7 @@ export function Footer({
             style={{
               marginTop: "48px",
               paddingTop: "24px",
-              borderTop: "2px solid #666",
+              borderTop: "var(--drp-border-thin)",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -114,25 +121,24 @@ export function Footer({
             {copyright && (
               <p
                 style={{
-                  fontFamily: "var(--drp-font-mono)",
-                  fontSize: "11px",
-                  opacity: 0.5,
+                  fontFamily: "var(--drp-font-primary)",
+                  fontSize: "12px",
+                  color: "var(--drp-text-muted)",
                 }}
               >
                 {copyright}
               </p>
             )}
             {bottomLinks && (
-              <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ display: "flex", gap: "24px" }}>
                 {bottomLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
+                    className="drp-footer__link"
                     style={{
-                      color: "#FFFFFF",
-                      textDecoration: "none",
-                      fontSize: "13px",
-                      opacity: 0.7,
+                      color: "var(--drp-text-secondary)",
+                      fontSize: "12px",
                     }}
                   >
                     {link.label}

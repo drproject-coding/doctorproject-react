@@ -11,6 +11,15 @@ export interface PaginationProps {
   className?: string;
 }
 
+/**
+ * Page navigation control for paginated lists and tables — use `variant="dark"` on surfaces with a dark background, and keep `totalPages` accurate to prevent dead-end states.
+ * @example
+ * <Pagination
+ *   currentPage={page}
+ *   totalPages={totalPages}
+ *   onPageChange={(p) => setPage(p)}
+ * />
+ */
 export function Pagination({
   currentPage,
   totalPages,

@@ -3,6 +3,14 @@ export interface DividerProps {
   className?: string;
 }
 
+/**
+ * Horizontal rule for visually separating sections — pass a `label` to render a centered uppercase text divider (e.g. "or", "Advanced settings") between two regions.
+ * @example
+ * // Plain separator between form sections
+ * <Divider />
+ * // Labeled separator between login options
+ * <Divider label="or continue with" />
+ */
 export function Divider({ label, className = "" }: DividerProps) {
   if (label) {
     return (

@@ -8,6 +8,17 @@ export interface BreadcrumbsProps {
   className?: string;
 }
 
+/**
+ * Landmark navigation trail showing the user's location within the app hierarchy — always include an `href` on all items except the last (current page).
+ * @example
+ * <Breadcrumbs
+ *   items={[
+ *     { label: "Dashboard", href: "/dashboard" },
+ *     { label: "Patients", href: "/patients" },
+ *     { label: "Maria Gonzalez" },
+ *   ]}
+ * />
+ */
 export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   const lastIndex = items.length - 1;
   return (

@@ -440,6 +440,8 @@ export function Dashboard() {
           {/* Search + Filter */}
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <Input
+              name="search"
+              autoComplete="off"
               placeholder="Search products by name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}

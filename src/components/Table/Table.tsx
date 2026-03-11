@@ -14,6 +14,19 @@ export interface TableProps<T> {
   caption?: string;
 }
 
+/**
+ * Data table with typed columns and optional custom cell rendering — use the `render` function on a column to display Badges, Buttons, or other components instead of plain text.
+ * @example
+ * <Table
+ *   aria-label="Recent appointments"
+ *   columns={[
+ *     { key: "patient", header: "Patient" },
+ *     { key: "date", header: "Date" },
+ *     { key: "status", header: "Status", render: (row) => <Badge variant="mint">{row.status}</Badge> },
+ *   ]}
+ *   data={appointments}
+ * />
+ */
 export function Table<T extends Record<string, any>>({
   columns,
   data,

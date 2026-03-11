@@ -70,11 +70,30 @@ const meta: Meta<typeof Button> = {
         "secondary",
         "dark",
       ],
+      description:
+        "Visual style — use 'primary' for the main CTA (one per screen), 'danger' for destructive actions, 'outline'/'ghost' for secondary actions.",
     },
-    size: { control: "select", options: [undefined, "sm", "lg"] },
-    block: { control: "boolean" },
-    icon: { control: "boolean" },
-    disabled: { control: "boolean" },
+    size: {
+      control: "select",
+      options: [undefined, "sm", "lg"],
+      description:
+        "Button size — omit for default (md), use 'sm' in dense UIs like tables, 'lg' for hero CTAs.",
+    },
+    block: {
+      control: "boolean",
+      description:
+        "Stretches the button to fill its container width — use in stacked mobile layouts or full-width form footers.",
+    },
+    icon: {
+      control: "boolean",
+      description:
+        "Renders as a square icon-only button — always pair with an aria-label for accessibility.",
+    },
+    disabled: {
+      control: "boolean",
+      description:
+        "Disables the button — always communicate why via surrounding text or a tooltip so users aren't confused.",
+    },
   },
 };
 export default meta;

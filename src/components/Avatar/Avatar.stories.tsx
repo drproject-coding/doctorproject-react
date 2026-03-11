@@ -6,7 +6,17 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   tags: ["autodocs"],
   argTypes: {
-    size: { control: "select", options: [undefined, "sm", "lg"] },
+    size: {
+      control: "select",
+      options: [undefined, "sm", "lg"],
+      description:
+        "Avatar size — use 'sm' in compact rows like comment threads, the default for most contexts, and 'lg' on profile pages.",
+    },
+    initials: {
+      control: "text",
+      description:
+        "1–2 character fallback shown when no image is available — typically the user's first and last initial.",
+    },
   },
 };
 export default meta;

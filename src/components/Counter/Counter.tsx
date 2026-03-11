@@ -7,6 +7,17 @@ export interface CounterProps {
   onChange?: (value: number) => void;
 }
 
+/**
+ * Stepper control for selecting a small integer quantity — use when a numeric input alone is error-prone and the valid range is bounded (e.g. number of doses, session slots).
+ * @example
+ * // Appointment slot selector (1–10)
+ * <Counter
+ *   value={slots}
+ *   min={1}
+ *   max={10}
+ *   onChange={(n) => setSlots(n)}
+ * />
+ */
 export function Counter({
   value: controlledValue,
   min = 0,

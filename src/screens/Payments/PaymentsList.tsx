@@ -808,6 +808,7 @@ const SendMoneyContent: React.FC = () => (
         <label className="drp-label">Select recipient</label>
         <div
           className="drp-input"
+          aria-label="Selected recipient: Rustem Tolstobrov"
           style={{
             display: "flex",
             alignItems: "center",
@@ -956,12 +957,16 @@ const PayUtilitiesContent: React.FC = () => (
       {/* Utilities */}
       <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
         <label className="drp-label">Utilities</label>
-        <div
+        <button
+          type="button"
           className="drp-input"
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            width: "100%",
+            textAlign: "left",
+            cursor: "pointer",
           }}
         >
           <span className="drp-text drp-text--bold">Mobile Networks</span>
@@ -980,22 +985,32 @@ const PayUtilitiesContent: React.FC = () => (
               d="M19 9l-7 7-7-7"
             />
           </svg>
-        </div>
+        </button>
       </div>
 
       {/* Service provider */}
       <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
         <label className="drp-label">Service provider</label>
-        <div
+        <button
+          type="button"
           className="drp-input"
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            width: "100%",
+            textAlign: "left",
+            cursor: "pointer",
           }}
         >
           <span className="drp-text drp-text--bold">Vodafone</span>
           <div
+            role="radio"
+            aria-checked={true}
+            tabIndex={0}
+            onKeyDown={(e) =>
+              (e.key === "Enter" || e.key === " ") && e.currentTarget.click()
+            }
             style={{
               width: 24,
               height: 24,
@@ -1015,7 +1030,7 @@ const PayUtilitiesContent: React.FC = () => (
               }}
             />
           </div>
-        </div>
+        </button>
       </div>
 
       {/* You will send */}

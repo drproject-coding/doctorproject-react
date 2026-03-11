@@ -4,6 +4,12 @@ export interface StatCardProps {
   className?: string;
 }
 
+/**
+ * Bold metric display card for KPI dashboards — renders a large tabular-numeric value in `var(--drp-purple)` above a small uppercase label, ideal for summary rows at the top of reports.
+ * @example
+ * <StatCard value="1,284" label="Patients this month" />
+ * <StatCard value="94%" label="Appointment attendance" />
+ */
 export function StatCard({ value, label, className = "" }: StatCardProps) {
   return (
     <dl

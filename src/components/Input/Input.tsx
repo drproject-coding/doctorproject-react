@@ -6,6 +6,20 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   success?: boolean;
 }
 
+/**
+ * Standard text input with optional label, validation state, and auto-generated `id` linking — pass `error` as a string to render an inline error message below the field.
+ * @example
+ * // Labeled email field with validation
+ * <Input
+ *   label="Email address"
+ *   type="email"
+ *   value={email}
+ *   onChange={(e) => setEmail(e.target.value)}
+ *   error={emailError}
+ * />
+ * // Success state after verification
+ * <Input label="National ID" value={nid} success />
+ */
 export function Input({
   label,
   error,

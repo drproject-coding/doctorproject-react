@@ -301,7 +301,11 @@ const V1Content: React.FC = () => (
           {v1Contacts.map((contact) => (
             <tr key={contact.name}>
               <td>
-                <input type="checkbox" className="drp-checkbox" />
+                <input
+                  type="checkbox"
+                  aria-label="Select contact"
+                  className="drp-checkbox"
+                />
               </td>
               <td>
                 <div className="drp-flex drp-items-center drp-gap-3">
@@ -323,7 +327,10 @@ const V1Content: React.FC = () => (
                 <StatusDot status={contact.status} />
               </td>
               <td>
-                <button className="drp-btn drp-btn--ghost drp-btn--sm">
+                <button
+                  aria-label="More options"
+                  className="drp-btn drp-btn--ghost drp-btn--sm"
+                >
                   ···
                 </button>
               </td>
@@ -367,7 +374,11 @@ const V2Content: React.FC = () => (
           {v2Contacts.map((contact) => (
             <tr key={contact.name}>
               <td>
-                <input type="checkbox" className="drp-checkbox" />
+                <input
+                  type="checkbox"
+                  aria-label="Select contact"
+                  className="drp-checkbox"
+                />
               </td>
               <td>
                 <div className="drp-flex drp-items-center drp-gap-3">
@@ -405,7 +416,10 @@ const V2Content: React.FC = () => (
                 </div>
               </td>
               <td>
-                <button className="drp-btn drp-btn--ghost drp-btn--sm">
+                <button
+                  aria-label="More options"
+                  className="drp-btn drp-btn--ghost drp-btn--sm"
+                >
                   ···
                 </button>
               </td>
@@ -495,7 +509,10 @@ const NewContactModal: React.FC = () => (
           }}
         >
           <h2 className="drp-h4">Latest transactions</h2>
-          <button className="drp-btn drp-btn--ghost drp-btn--icon">
+          <button
+            aria-label="Close"
+            className="drp-btn drp-btn--ghost drp-btn--icon"
+          >
             <svg
               width="20"
               height="20"

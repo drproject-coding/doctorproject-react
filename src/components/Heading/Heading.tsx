@@ -7,6 +7,14 @@ export interface HeadingProps {
   className?: string;
 }
 
+/**
+ * Semantic heading element (`h1`–`h6`) with DS typography tokens — use `uppercase` for section labels and dashboard module titles that need extra visual weight.
+ * @example
+ * // Page title
+ * <Heading level={1}>Patient Overview</Heading>
+ * // Section label with caps treatment
+ * <Heading level={3} uppercase>Recent Activity</Heading>
+ */
 export function Heading({
   level = 1,
   children,

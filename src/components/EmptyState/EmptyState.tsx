@@ -8,6 +8,16 @@ export interface EmptyStateProps {
   className?: string;
 }
 
+/**
+ * Centered placeholder shown when a list or data region has no content — always provide an `action` with a clear next step so users are never left without guidance.
+ * @example
+ * <EmptyState
+ *   icon="📋"
+ *   title="No appointments scheduled"
+ *   description="Book your first appointment to get started."
+ *   action={<Button variant="primary">Schedule Appointment</Button>}
+ * />
+ */
 export function EmptyState({
   icon = "∅",
   title,

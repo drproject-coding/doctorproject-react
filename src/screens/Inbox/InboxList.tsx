@@ -211,6 +211,7 @@ const MailListVariant: React.FC = () => {
             </svg>
             <input
               type="text"
+              name="search"
               placeholder="Type to search..."
               className="drp-input"
               style={{
@@ -246,7 +247,11 @@ const MailListVariant: React.FC = () => {
                 style={{ flexShrink: 0 }}
               >
                 <label className="drp-checkbox">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    name="select-item"
+                    aria-label="Select item"
+                  />
                 </label>
                 <button
                   className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
@@ -839,6 +844,7 @@ const ChatVariant: React.FC = () => (
               <Avatar name="Gabriela Pires" size="sm" />
               <input
                 type="text"
+                name="comment"
                 placeholder="Type to add something"
                 className="drp-input"
                 style={{
@@ -1084,6 +1090,7 @@ const MailComposeVariant: React.FC = () => (
             <Avatar name="Helena Chavez" size="sm" />
             <input
               type="text"
+              name="comment"
               placeholder="Type to add something"
               className="drp-input"
               style={{
@@ -1291,9 +1298,7 @@ export const InboxList: React.FC<InboxListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="inbox" />
-      <div className="main-content">
-        {renderContent()}
-      </div>
+      <div className="main-content">{renderContent()}</div>
     </div>
   );
 };

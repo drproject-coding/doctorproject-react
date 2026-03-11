@@ -9,6 +9,14 @@ export interface ProgressBarProps {
   className?: string;
 }
 
+/**
+ * Horizontal progress indicator for completion percentages and loading states — pass `label` to render the metric name and live percentage side-by-side above the bar.
+ * @example
+ * // Onboarding completion tracker
+ * <ProgressBar value={65} color="mint" label="Profile completion" />
+ * // Compact bar without label
+ * <ProgressBar value={40} color="pink" size="sm" />
+ */
 export function ProgressBar({
   value,
   color,

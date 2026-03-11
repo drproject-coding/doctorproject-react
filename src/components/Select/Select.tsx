@@ -7,6 +7,21 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   children: ReactNode;
 }
 
+/**
+ * Dropdown selector for choosing from a predefined list of options — always pair with a `label` for accessibility and pass `error` as a string to show inline validation messages.
+ * @example
+ * <Select
+ *   label="Appointment type"
+ *   value={type}
+ *   onChange={(e) => setType(e.target.value)}
+ *   error={typeError}
+ * >
+ *   <option value="">Select a type…</option>
+ *   <option value="checkup">General check-up</option>
+ *   <option value="followup">Follow-up</option>
+ *   <option value="urgent">Urgent care</option>
+ * </Select>
+ */
 export function Select({
   label,
   error,

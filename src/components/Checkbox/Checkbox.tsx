@@ -8,6 +8,18 @@ export interface CheckboxProps extends Omit<
   dark?: boolean;
 }
 
+/**
+ * Accessible checkbox input with an associated visible label — use `dark` on dark-background surfaces such as panels with `var(--drp-purple)` fill.
+ * @example
+ * // Consent checkbox in a form
+ * <Checkbox
+ *   label="I agree to the terms and conditions"
+ *   checked={agreed}
+ *   onChange={(e) => setAgreed(e.target.checked)}
+ * />
+ * // Pre-checked option on a dark panel
+ * <Checkbox label="Send appointment reminders via SMS" dark defaultChecked />
+ */
 export function Checkbox({
   label,
   dark,

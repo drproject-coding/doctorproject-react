@@ -740,21 +740,23 @@ export const ToolsTrackerProducts: React.FC<ToolsTrackerProductsProps> = ({
                 aria-label="Toggle theme"
                 style={{ fontSize: 16, lineHeight: 1 }}
               >
-                {theme === "light" ? "🌙" : "☀️"}
+                <span aria-hidden="true">
+                  {theme === "light" ? "🌙" : "☀️"}
+                </span>
               </button>
               <button
                 className="drp-btn drp-btn--ghost drp-btn--sm"
                 aria-label="Refresh"
                 style={{ fontSize: 18 }}
               >
-                ↻
+                <span aria-hidden="true">↻</span>
               </button>
               <button
                 className="drp-btn drp-btn--ghost drp-btn--sm"
                 aria-label="Add product"
                 style={{ fontSize: 18 }}
               >
-                +
+                <span aria-hidden="true">+</span>
               </button>
               <button className="drp-btn drp-btn--primary drp-btn--sm">
                 ↻ Refresh
@@ -776,13 +778,18 @@ export const ToolsTrackerProducts: React.FC<ToolsTrackerProductsProps> = ({
             }}
           >
             {STATS.map((s) => (
-              <div
+              <button
                 key={s.key}
+                type="button"
                 className="drp-card"
                 style={{
                   padding: "var(--drp-space-4)",
                   cursor: s.key !== "total" ? "pointer" : "default",
                   transition: "box-shadow 0.15s ease",
+                  background: "none",
+                  border: "none",
+                  textAlign: "left",
+                  width: "100%",
                 }}
                 onClick={() =>
                   s.key !== "total" && handleFilter(s.key as ProductFilter)
@@ -809,7 +816,7 @@ export const ToolsTrackerProducts: React.FC<ToolsTrackerProductsProps> = ({
                 >
                   {s.value}
                 </p>
-              </div>
+              </button>
             ))}
           </div>
 

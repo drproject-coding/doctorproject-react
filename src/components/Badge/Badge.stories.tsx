@@ -17,6 +17,8 @@ const meta: Meta<typeof Badge> = {
         "mint",
         "pink",
       ],
+      description:
+        "Visual style — use 'filled' for high-visibility counts, 'primary'/'secondary' to match button hierarchy, 'mint' for positive status, 'pink' for urgent alerts.",
     },
   },
 };

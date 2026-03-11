@@ -9,6 +9,8 @@ const meta: Meta<typeof Alert> = {
     variant: {
       control: "select",
       options: ["info", "success", "warning", "error"],
+      description:
+        "Semantic tone — use 'info' for neutral guidance, 'success' after a completed action, 'warning' for reversible risks, 'error' for blocking failures.",
     },
   },
 };

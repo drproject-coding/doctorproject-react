@@ -26,6 +26,14 @@ export interface TagProps {
   className?: string;
 }
 
+/**
+ * Compact label for categorizing or filtering content — use `closeable`/`onClose` for dismissible filter chips, `dot` or `legend` for color-coded legend items in charts or status lists.
+ * @example
+ * // Dismissible filter chip
+ * <Tag color="purple" filled closeable onClose={() => removeFilter("cardiology")}>Cardiology</Tag>
+ * // Legend item with dot
+ * <Tag color="mint" legend>Completed</Tag>
+ */
 export function Tag({
   children,
   color,

@@ -219,7 +219,10 @@ const V1Content: React.FC = () => (
                 <span className="drp-text drp-text--bold">{p.price}</span>
               </td>
               <td>
-                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <button
+                  aria-label="More options"
+                  className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                >
                   ...
                 </button>
               </td>
@@ -438,7 +441,10 @@ const V2Content: React.FC = () => (
                 <span className="drp-text drp-text--bold">{p.price}</span>
               </td>
               <td>
-                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <button
+                  aria-label="More options"
+                  className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                >
                   ...
                 </button>
               </td>
@@ -555,11 +561,17 @@ const V3Content: React.FC = () => (
         </button>
         <button className="drp-btn drp-btn--sm drp-btn--outline">Group</button>
         <button className="drp-btn drp-btn--sm drp-btn--outline">Sort</button>
-        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
+        <button
+          aria-label="More options"
+          className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm"
+        >
           ...
         </button>
       </div>
-      <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
+      <button
+        aria-label="Search"
+        className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm"
+      >
         <svg
           width="16"
           height="16"
@@ -643,7 +655,10 @@ const V3Content: React.FC = () => (
                 </span>
               </td>
               <td>
-                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <button
+                  aria-label="More options"
+                  className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                >
                   ...
                 </button>
               </td>
@@ -810,7 +825,9 @@ export const ProductsList: React.FC<ProductsListProps> = ({
     <div className="app-layout">
       <AppSidebar activeId="products" />
       <div className="main-content">
-        <AppTopBar title={variant === "details" ? "Product Details" : "Products"} />
+        <AppTopBar
+          title={variant === "details" ? "Product Details" : "Products"}
+        />
         {renderContent()}
         <AppFooter />
       </div>

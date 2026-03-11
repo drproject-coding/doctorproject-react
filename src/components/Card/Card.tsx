@@ -15,6 +15,15 @@ export interface CardHeaderProps {
   action?: ReactNode;
 }
 
+/**
+ * General-purpose content container with brutalist offset-black shadow — use `variant="raised"` for prominent panels, `variant="interactive"` for clickable cards, and `accent` to add a branded left-border stripe.
+ * @example
+ * // Patient summary card
+ * <Card variant="raised" accent="purple">
+ *   <CardHeader title="Maria Gonzalez" subtitle="DOB: 12 Mar 1985" />
+ *   <p>Last visit: 3 days ago</p>
+ * </Card>
+ */
 export function Card({
   variant,
   accent,
@@ -37,6 +46,15 @@ export function Card({
   );
 }
 
+/**
+ * Standardized header section for a `Card` — renders a bold title, optional subtitle, and an optional action node (e.g. a Button or Badge) pinned to the right.
+ * @example
+ * <CardHeader
+ *   title="Recent Appointments"
+ *   subtitle="Last 30 days"
+ *   action={<Button variant="ghost" size="sm">View all</Button>}
+ * />
+ */
 export function CardHeader({ title, subtitle, action }: CardHeaderProps) {
   return (
     <div className="drp-card__header">

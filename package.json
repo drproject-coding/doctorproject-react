@@ -11,12 +11,26 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles": "./src/styles/global.css"
+    "./styles": "./src/styles/global.css",
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js",
+      "require": "./dist/tokens.cjs"
+    }
   },
+  "files": [
+    "dist",
+    "src/styles",
+    "src/tokens.ts"
+  ],
   "scripts": {
     "build": "tsup",
+    "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": ">=18",

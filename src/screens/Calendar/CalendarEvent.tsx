@@ -4,7 +4,7 @@ import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
 import { AppFooter } from "../shared/AppFooter";
 
-type CalendarView = 'month' | 'week' | 'day';
+type CalendarView = "month" | "week" | "day";
 
 const CalendarNav: React.FC<{
   view: CalendarView;
@@ -205,6 +205,7 @@ const EventModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
         }}
       >
         <input
+          name="comment"
           className="drp-input"
           style={{
             flex: 1,
@@ -348,7 +349,14 @@ const MonthView: React.FC<{ showModal: boolean; onToggle: () => void }> = ({
           {week.map((cell, ci) => (
             <div
               key={ci}
+              role={cell.day ? "button" : undefined}
+              tabIndex={cell.day ? 0 : undefined}
               onClick={cell.day ? onToggle : undefined}
+              onKeyDown={
+                cell.day
+                  ? (e) => (e.key === "Enter" || e.key === " ") && onToggle()
+                  : undefined
+              }
               style={{
                 minHeight: 90,
                 borderRight: ci < 6 ? "var(--drp-border-thin)" : "none",

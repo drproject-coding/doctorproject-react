@@ -5,6 +5,13 @@ const meta: Meta<typeof Divider> = {
   title: "Components/Divider",
   component: Divider,
   tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description:
+        "Optional centered text label — use short uppercase strings like 'OR' or 'SECTION 02' to split content into named groups.",
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Divider>;

@@ -28,6 +28,16 @@ const variantStyles: Record<
   error: { bg: "rgba(255,68,68,0.08)", border: "var(--drp-pink)", icon: "✕" },
 };
 
+/**
+ * Inline feedback banner for system messages — use `variant="error"` for form-level errors, `variant="success"` after a completed action, and `variant="warning"` for non-blocking risks.
+ * @example
+ * // Success confirmation after saving
+ * <Alert variant="success" title="Profile updated" onClose={handleDismiss}>
+ *   Your changes have been saved successfully.
+ * </Alert>
+ * // Error with no title
+ * <Alert variant="error">Payment failed. Please check your card details and try again.</Alert>
+ */
 export function Alert({
   variant = "info",
   title,

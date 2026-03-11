@@ -7,6 +7,18 @@ export interface TooltipProps {
   className?: string;
 }
 
+/**
+ * On-focus tooltip that surfaces supplementary context for an interactive element — wrap a single focusable child (button, link, input) and set `text` to a concise non-essential description.
+ * @example
+ * // Explain an icon-only button
+ * <Tooltip text="Export as CSV">
+ *   <Button icon aria-label="Export"><DownloadIcon /></Button>
+ * </Tooltip>
+ * // Clarify a form field's requirement
+ * <Tooltip text="Must match the name on your insurance card">
+ *   <Input label="Full legal name" value={name} onChange={handleChange} />
+ * </Tooltip>
+ */
 export function Tooltip({ text, children, className = "" }: TooltipProps) {
   const tooltipId = useId();
   const [visible, setVisible] = useState(false);

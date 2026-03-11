@@ -51,6 +51,7 @@ const SupportHero: React.FC<SupportHeroProps> = ({
         readOnly
       />
       <button
+        aria-label="Search"
         className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm"
         style={{
           position: "absolute",
@@ -194,6 +195,7 @@ const Breadcrumb: React.FC<{ items: string[] }> = ({ items }) => (
       <React.Fragment key={i}>
         {i > 0 && (
           <svg
+            aria-hidden="true"
             width="12"
             height="12"
             viewBox="0 0 24 24"
@@ -235,16 +237,22 @@ const ArticleSidebarNav: React.FC = () => {
     >
       <nav>
         {items.map((item) => (
-          <div
+          <button
             key={item.label}
+            type="button"
             className={`drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`}
             style={{
               padding: "6px var(--drp-space-3)",
               cursor: "pointer",
+              background: "none",
+              border: "none",
+              display: "block",
+              width: "100%",
+              textAlign: "left",
             }}
           >
             {item.label}
-          </div>
+          </button>
         ))}
       </nav>
     </div>
@@ -779,7 +787,11 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                     <SearchResultRow key={r.title} {...r} />
                   ))}
                 </div>
-                                <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
+                <Pagination
+                  currentPage={1}
+                  totalPages={10}
+                  onPageChange={() => {}}
+                />
               </div>
             </>
           )}

@@ -58,9 +58,9 @@ export function Dropzone({
     .join(" ");
 
   return (
-    <div
+    <button
+      type="button"
       className={classes}
-      role="button"
       tabIndex={0}
       aria-label={ariaLabel}
       onDragOver={handleDragOver}
@@ -77,11 +77,13 @@ export function Dropzone({
         style={{ display: "none" }}
         onChange={handleChange}
       />
-      <span className="drp-dropzone__icon">{icon}</span>
+      <span className="drp-dropzone__icon" aria-hidden={true}>
+        {icon}
+      </span>
       <span className="drp-dropzone__text">
         Drop files here or click to upload
       </span>
       {hint && <span className="drp-dropzone__hint">{hint}</span>}
-    </div>
+    </button>
   );
 }

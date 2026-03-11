@@ -7,6 +7,18 @@ export interface SkeletonProps {
   className?: string;
 }
 
+/**
+ * Shimmering placeholder shown while content is loading — use `variant="circular"` for avatars, `variant="rectangular"` for cards and images, and `variant="text"` for inline copy.
+ * @example
+ * // Loading state for a patient card
+ * <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+ *   <Skeleton variant="circular" width={48} />
+ *   <div>
+ *     <Skeleton variant="text" width={160} />
+ *     <Skeleton variant="text" width={100} />
+ *   </div>
+ * </div>
+ */
 export function Skeleton({
   width,
   height,

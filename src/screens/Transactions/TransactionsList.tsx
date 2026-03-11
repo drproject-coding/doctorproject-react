@@ -282,7 +282,10 @@ const ListV1Content: React.FC = () => (
             </div>
             <div className="drp-caption">{tx.date}</div>
           </div>
-          <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+          <button
+            aria-label="More options"
+            className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+          >
             ...
           </button>
         </div>
@@ -356,7 +359,10 @@ const ListV2Content: React.FC = () => {
                   </span>
                 </td>
                 <td>
-                  <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                  <button
+                    aria-label="More options"
+                    className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                  >
                     ...
                   </button>
                 </td>
@@ -395,6 +401,7 @@ const InvoiceModal: React.FC = () => (
           Transaction details
         </span>
         <button
+          aria-label="Close"
           className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
           style={{ color: "var(--drp-white)" }}
         >
@@ -677,7 +684,10 @@ const InvoiceContent: React.FC = () => {
                     </span>
                   </td>
                   <td>
-                    <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                    <button
+                      aria-label="More options"
+                      className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                    >
                       ...
                     </button>
                   </td>
@@ -757,6 +767,7 @@ const EmptyContent: React.FC = () => (
     <div className="drp-empty" style={{ position: "relative", zIndex: 1 }}>
       <div style={{ marginBottom: "var(--drp-space-6)" }}>
         <svg
+          aria-hidden="true"
           width="64"
           height="64"
           style={{ color: "var(--drp-black)" }}

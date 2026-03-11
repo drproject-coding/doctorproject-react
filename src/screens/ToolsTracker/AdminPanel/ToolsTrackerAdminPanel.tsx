@@ -566,7 +566,13 @@ const LABEL: React.CSSProperties = {
 /* =========================================================================== */
 
 const LinkIcon: React.FC = () => (
-  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 13 13"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M5.2 2H2.5C1.67 2 1 2.67 1 3.5v7C1 11.33 1.67 12 2.5 12h7c.83 0 1.5-.67 1.5-1.5V7.8"
       stroke="#f97316"
@@ -922,6 +928,7 @@ const UsersPanel: React.FC = () => {
         filters={
           <Input
             value={search}
+            aria-label="Search users by email"
             onChange={(e) => {
               setSearch(e.target.value);
               setPage(1);
@@ -941,7 +948,7 @@ const UsersPanel: React.FC = () => {
           <thead>
             <tr>
               <th style={{ ...TH, width: 36 }}>
-                <input type="checkbox" />
+                <input type="checkbox" aria-label="Select all users" />
               </th>
               <th style={TH}>ID</th>
               <th style={TH}>EMAIL</th>
@@ -956,7 +963,10 @@ const UsersPanel: React.FC = () => {
             {paged.map((user) => (
               <tr key={user.id}>
                 <td style={TD}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    aria-label={`Select user ${user.email}`}
+                  />
                 </td>
                 <td style={TD}>{user.id}</td>
                 <td style={TD}>{user.email}</td>
@@ -1027,6 +1037,7 @@ const ProductsPanel: React.FC = () => {
         <>
           <Input
             value={search}
+            aria-label="Search products"
             onChange={(e) => {
               setSearch(e.target.value);
               setPage(1);
@@ -1036,6 +1047,7 @@ const ProductsPanel: React.FC = () => {
           <select
             className="drp-input"
             value={userFilter}
+            aria-label="Filter by user"
             onChange={(e) => {
               setUserFilter(e.target.value);
               setPage(1);
@@ -1052,6 +1064,7 @@ const ProductsPanel: React.FC = () => {
           <select
             className="drp-input"
             value={statusFilter}
+            aria-label="Filter by status"
             onChange={(e) => {
               setStatusFilter(e.target.value);
               setPage(1);
@@ -1078,7 +1091,7 @@ const ProductsPanel: React.FC = () => {
         <thead>
           <tr>
             <th style={{ ...TH, width: 36 }}>
-              <input type="checkbox" />
+              <input type="checkbox" aria-label="Select all products" />
             </th>
             <th style={TH}>ID</th>
             <th style={TH}>USER</th>
@@ -1098,7 +1111,10 @@ const ProductsPanel: React.FC = () => {
           {paged.map((p) => (
             <tr key={p.id}>
               <td style={TD}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  aria-label={`Select product ${p.name}`}
+                />
               </td>
               <td style={TD}>{p.id}</td>
               <td
@@ -1203,6 +1219,7 @@ const InvoicesPanel: React.FC = () => {
           <>
             <Input
               value={search}
+              aria-label="Search invoices"
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(1);
@@ -1212,6 +1229,7 @@ const InvoicesPanel: React.FC = () => {
             <select
               className="drp-input"
               value={userFilter}
+              aria-label="Filter by user"
               onChange={(e) => setUserFilter(e.target.value)}
               style={{ width: 200 }}
             >
@@ -1221,6 +1239,7 @@ const InvoicesPanel: React.FC = () => {
             <select
               className="drp-input"
               value={statusFilter}
+              aria-label="Filter by invoice status"
               onChange={(e) => {
                 setStatusFilter(e.target.value);
                 setPage(1);

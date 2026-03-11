@@ -6,9 +6,21 @@ const meta: Meta<typeof Input> = {
   component: Input,
   tags: ["autodocs"],
   argTypes: {
-    error: { control: "boolean" },
-    success: { control: "boolean" },
-    disabled: { control: "boolean" },
+    error: {
+      control: "boolean",
+      description:
+        "Shows an error state with red border — set when field validation has failed and pair with a helper message explaining what to fix.",
+    },
+    success: {
+      control: "boolean",
+      description:
+        "Shows a success state with green border — set after async validation confirms a value is valid (e.g. username availability).",
+    },
+    disabled: {
+      control: "boolean",
+      description:
+        "Makes the field non-interactive — use when the value is locked by system state, not user choice.",
+    },
   },
 };
 export default meta;

@@ -5,6 +5,18 @@ const meta: Meta<typeof Switch> = {
   title: "Components/Switch",
   component: Switch,
   tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description:
+        "Visible label describing what the toggle controls — use a noun or short phrase (e.g. 'Dark mode'), not a verb.",
+    },
+    defaultChecked: {
+      control: "boolean",
+      description:
+        "Sets the initial on/off state for uncontrolled usage — reflect the user's saved preference when available.",
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Switch>;

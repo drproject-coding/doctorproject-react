@@ -28,6 +28,16 @@ export type ButtonProps =
   | (ButtonBaseProps & { icon?: false; "aria-label"?: string })
   | (ButtonBaseProps & { icon: true; "aria-label": string });
 
+/**
+ * Primary interactive element for all user actions — use `variant="primary"` for the main CTA, `variant="danger"` for destructive actions (always pair with a confirmation dialog), and never use raw `<button>` elements.
+ * @example
+ * // Standard form submit
+ * <Button variant="primary" onClick={handleSave}>Save Changes</Button>
+ * // Destructive with icon
+ * <Button variant="danger" iconLeft={<TrashIcon />}>Delete Account</Button>
+ * // Icon-only (aria-label required)
+ * <Button icon aria-label="Close dialog"><XIcon /></Button>
+ */
 export function Button({
   variant,
   size,

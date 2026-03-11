@@ -65,32 +65,52 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {sections.map((section, sIdx) => (
           <div key={sIdx} className="sidebar-nav-section">
             <div className="sidebar-nav-label">{section.label}</div>
-            {section.items.map((item) => (
-              <a
-                key={item.id}
-                className={`sidebar-nav-item${item.active ? " active" : ""}`}
-                href={item.href || "#"}
-                aria-label={collapsed ? item.label : undefined}
-                aria-current={item.active ? "page" : undefined}
-                onClick={(e) => {
-                  e.preventDefault();
-                  item.onClick?.();
-                  onItemClick?.(item.id);
-                }}
-              >
-                {item.icon && (
-                  <span className="sidebar-nav-icon">{item.icon}</span>
-                )}
-                <span className="sidebar-nav-text">{item.label}</span>
-                {item.badge !== undefined && (
-                  <span
-                    className={`sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </a>
-            ))}
+            {section.items.map((item) => {
+              const sharedProps = {
+                key: item.id,
+                className: `sidebar-nav-item${item.active ? " active" : ""}`,
+                "aria-label": collapsed ? item.label : undefined,
+                "aria-current": item.active ? ("page" as const) : undefined,
+              };
+              const inner = (
+                <>
+                  {item.icon && (
+                    <span className="sidebar-nav-icon">{item.icon}</span>
+                  )}
+                  <span className="sidebar-nav-text">{item.label}</span>
+                  {item.badge !== undefined && (
+                    <span
+                      className={`sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </>
+              );
+              return item.href ? (
+                <a
+                  {...sharedProps}
+                  href={item.href}
+                  onClick={() => {
+                    item.onClick?.();
+                    onItemClick?.(item.id);
+                  }}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <button
+                  {...sharedProps}
+                  type="button"
+                  onClick={() => {
+                    item.onClick?.();
+                    onItemClick?.(item.id);
+                  }}
+                >
+                  {inner}
+                </button>
+              );
+            })}
           </div>
         ))}
       </nav>

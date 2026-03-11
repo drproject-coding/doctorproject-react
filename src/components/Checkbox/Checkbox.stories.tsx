@@ -5,6 +5,23 @@ const meta: Meta<typeof Checkbox> = {
   title: "Components/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description:
+        "Visible label rendered next to the checkbox — always provide one unless the checkbox context is unambiguous with an aria-label.",
+    },
+    disabled: {
+      control: "boolean",
+      description:
+        "Prevents user interaction — use when the option is unavailable in the current state, not just to guide preference.",
+    },
+    dark: {
+      control: "boolean",
+      description:
+        "Applies a dark-theme style — use on dark backgrounds like sidebars or hero sections.",
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Checkbox>;

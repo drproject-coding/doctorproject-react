@@ -13,6 +13,14 @@ export interface TextProps {
   className?: string;
 }
 
+/**
+ * Body copy component with DS type scale and semantic weight variants — use `muted` or `secondary` for supporting text, and `as` to switch the rendered element without losing styling.
+ * @example
+ * // Body paragraph
+ * <Text>Review the patient's records before proceeding with the referral.</Text>
+ * // Supporting caption beneath a field
+ * <Text size="xs" muted as="span">Last updated 2 hours ago</Text>
+ */
 export function Text({
   size,
   weight,

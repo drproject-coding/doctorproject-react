@@ -29,6 +29,7 @@ const CalendarIcon: React.FC = () => (
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
+    aria-hidden="true"
   >
     <rect x="3" y="4" width="18" height="18" rx="0" strokeWidth={2} />
     <path strokeLinecap="round" strokeWidth={2} d="M16 2v4M8 2v4M3 10h18" />
@@ -113,6 +114,8 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
       style={{ width: "100%", height }}
+      role="img"
+      aria-label="Bar chart"
     >
       {/* Y-axis grid lines */}
       {yLines.map((v) => {
@@ -211,6 +214,8 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
       style={{ width: "100%", height }}
+      role="img"
+      aria-label="Horizontal bar chart"
     >
       {/* X grid lines */}
       {xTicks.map((v) => {
@@ -379,6 +384,8 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
       style={{ width: "100%", height }}
+      role="img"
+      aria-label="Wave line chart"
     >
       <defs>
         <linearGradient id="waveBlueGrad" x1="0" y1="0" x2="0" y2="1">
@@ -535,6 +542,8 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
       style={{ width: "100%", height }}
+      role="img"
+      aria-label="Double bar chart"
     >
       {yLines.map((v) => {
         const y = padTop + chartH - (v / maxValue) * chartH;
@@ -753,6 +762,7 @@ const Sparkline: React.FC<SparklineProps> = ({
       viewBox={`0 0 ${w} ${h}`}
       style={{ width: 80, height: 40 }}
       preserveAspectRatio="none"
+      aria-hidden="true"
     >
       <defs>
         <linearGradient
@@ -798,6 +808,7 @@ const BarSparkline: React.FC<BarSparklineProps> = ({
       viewBox={`0 0 ${w} ${h}`}
       style={{ width: 80, height: 48 }}
       preserveAspectRatio="none"
+      aria-hidden="true"
     >
       {values.map((v, i) => {
         const barH = (v / max) * h * 0.9;
@@ -852,7 +863,12 @@ const DonutChart: React.FC<DonutChartProps> = ({
     ];
     const radii = [R, R - 20, R - 40];
     return (
-      <svg viewBox="0 0 240 240" style={{ width: "100%", height }}>
+      <svg
+        viewBox="0 0 240 240"
+        style={{ width: "100%", height }}
+        role="img"
+        aria-label={label ? `Donut chart: ${label}` : "Donut chart"}
+      >
         {radii.map((rad, i) => (
           <circle
             key={i}
@@ -930,7 +946,12 @@ const DonutChart: React.FC<DonutChartProps> = ({
   });
 
   return (
-    <svg viewBox="0 0 240 240" style={{ width: "100%", height }}>
+    <svg
+      viewBox="0 0 240 240"
+      style={{ width: "100%", height }}
+      role="img"
+      aria-label={label ? `Donut chart: ${label}` : "Donut chart"}
+    >
       {paths.map((p, i) => (
         <path key={i} d={p.d} fill={p.color} />
       ))}
@@ -1219,6 +1240,7 @@ const StatCard1: React.FC<StatCard1Props> = ({
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        aria-hidden="true"
       >
         <path
           strokeLinecap="round"
@@ -1652,7 +1674,12 @@ export const ChartGeometricScreen: React.FC = () => (
               <div className="drp-stat-card__value">{s.value}</div>
             </div>
             <div style={{ width: 24, height: 24, color: "var(--drp-grey)" }}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -1889,6 +1916,7 @@ export const DoubleBarsScreen: React.FC = () => (
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -2056,6 +2084,7 @@ export const PolarChartScreen: React.FC = () => (
               viewBox="0 0 24 24"
               stroke="currentColor"
               style={{ width: 20, height: 20 }}
+              aria-hidden="true"
             >
               <rect x="3" y="3" width="7" height="7" rx="0" strokeWidth={2} />
               <rect x="14" y="3" width="7" height="7" rx="0" strokeWidth={2} />
@@ -2075,6 +2104,7 @@ export const PolarChartScreen: React.FC = () => (
               viewBox="0 0 24 24"
               stroke="currentColor"
               style={{ width: 20, height: 20 }}
+              aria-hidden="true"
             >
               <rect x="3" y="4" width="18" height="18" rx="0" strokeWidth={2} />
               <path
@@ -2096,6 +2126,7 @@ export const PolarChartScreen: React.FC = () => (
               viewBox="0 0 24 24"
               stroke="currentColor"
               style={{ width: 20, height: 20 }}
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"

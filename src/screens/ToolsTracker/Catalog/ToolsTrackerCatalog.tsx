@@ -1262,12 +1262,17 @@ const DealDetailPanel: React.FC<{
   <>
     {/* Backdrop */}
     <div
+      role="button"
+      tabIndex={0}
+      aria-label="Close deal details"
       onClick={onClose}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onClose()}
       style={{
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.35)",
         zIndex: 40,
+        cursor: "pointer",
       }}
     />
 
@@ -1306,7 +1311,7 @@ const DealDetailPanel: React.FC<{
           onClick={onClose}
           aria-label="Close"
         >
-          ✕
+          <span aria-hidden="true">✕</span>
         </button>
       </div>
 
@@ -1675,7 +1680,9 @@ export const ToolsTrackerCatalog: React.FC<ToolsTrackerCatalogProps> = ({
                 aria-label="Toggle theme"
                 style={{ fontSize: 16, lineHeight: 1 }}
               >
-                {theme === "light" ? "🌙" : "☀️"}
+                <span aria-hidden="true">
+                  {theme === "light" ? "🌙" : "☀️"}
+                </span>
               </button>
               <button className="drp-btn drp-btn--primary drp-btn--sm">
                 ↻ Sync Catalog

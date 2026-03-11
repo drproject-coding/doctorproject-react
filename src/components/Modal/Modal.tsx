@@ -11,6 +11,23 @@ export interface ModalProps {
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+/**
+ * Accessible focus-trapped dialog for confirmations and multi-step flows — always wire `footer` with at least a Cancel and a primary action button so users have a clear escape path.
+ * @example
+ * <Modal
+ *   open={isOpen}
+ *   onClose={() => setOpen(false)}
+ *   title="Confirm Cancellation"
+ *   footer={
+ *     <>
+ *       <Button variant="outline" onClick={() => setOpen(false)}>Keep Appointment</Button>
+ *       <Button variant="danger" onClick={handleCancel}>Cancel Appointment</Button>
+ *     </>
+ *   }
+ * >
+ *   Are you sure you want to cancel the appointment with Dr. Okafor on 14 Apr?
+ * </Modal>
+ */
 export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   const titleId = useId();
   const modalRef = useRef<HTMLDivElement>(null);
@@ -69,12 +86,7 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   };
 
   return (
-    <div
-      className="drp-overlay"
-      role="presentation"
-      onClick={onClose}
-      onKeyDown={(e) => e.key === "Escape" && onClose()}
-    >
+    <div className="drp-overlay" role="presentation" onClick={onClose}>
       <div
         className="drp-modal"
         ref={modalRef}

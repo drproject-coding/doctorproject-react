@@ -6,6 +6,14 @@ export interface LoaderProps {
   className?: string;
 }
 
+/**
+ * Spinning indicator for async operations — use `size="sm"` inline within buttons or table cells, `size="lg"` for full-section loading states, and `label` to provide screen-reader context.
+ * @example
+ * // Full-page loading state
+ * <Loader size="lg" label="Loading patient records…" />
+ * // Inline inside a data cell
+ * <Loader size="sm" />
+ */
 export function Loader({ size, label, className = "" }: LoaderProps) {
   const dimension = size === "sm" ? 20 : size === "lg" ? 48 : 32;
   const borderWidth = size === "sm" ? 2 : size === "lg" ? 4 : 3;

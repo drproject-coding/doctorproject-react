@@ -5,6 +5,13 @@ const meta: Meta<typeof Breadcrumbs> = {
   title: "Layout/Breadcrumbs",
   component: Breadcrumbs,
   tags: ["autodocs"],
+  argTypes: {
+    items: {
+      control: "object",
+      description:
+        "Ordered array of breadcrumb segments — each item with a label and optional href; the last item is rendered as the current page (no link).",
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Breadcrumbs>;
