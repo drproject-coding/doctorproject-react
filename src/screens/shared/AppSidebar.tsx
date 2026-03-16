@@ -15,17 +15,17 @@ const BASE_SECTIONS: SidebarNavSection[] = [
   {
     label: "Main",
     items: [
-      { id: "dashboard",    label: "Dashboard",    icon: P("Layout") },
-      { id: "products",     label: "Products",     icon: P("Basket") },
-      { id: "customers",    label: "Customers",    icon: P("Apps") },
-      { id: "contacts",     label: "Contacts",     icon: P("Message") },
-      { id: "accounts",     label: "Accounts",     icon: P("Credit card") },
+      { id: "dashboard", label: "Dashboard", icon: P("Layout") },
+      { id: "products", label: "Products", icon: P("Basket") },
+      { id: "customers", label: "Customers", icon: P("Apps") },
+      { id: "contacts", label: "Contacts", icon: P("Message") },
+      { id: "accounts", label: "Accounts", icon: P("Folder") },
       { id: "transactions", label: "Transactions", icon: P("Up arrow") },
-      { id: "sales",        label: "Sales",        icon: P("Analytics") },
+      { id: "sales", label: "Sales", icon: P("Analytics") },
       {
         id: "payments",
         label: "Payments",
-        icon: P("Folder"),
+        icon: P("Credit card"),
         badge: 14,
         badgeVariant: "green",
       },
@@ -34,7 +34,7 @@ const BASE_SECTIONS: SidebarNavSection[] = [
   {
     label: "Tools",
     items: [
-      { id: "calendar",  label: "Calendar",  icon: P("Time") },
+      { id: "calendar", label: "Calendar", icon: P("Time") },
       {
         id: "inbox",
         label: "Inbox",
@@ -43,15 +43,13 @@ const BASE_SECTIONS: SidebarNavSection[] = [
         badgeVariant: "purple",
       },
       { id: "education", label: "Education", icon: P("Bookmark") },
-      { id: "reports",   label: "Reports",   icon: P("Pie Chart") },
-      { id: "support",   label: "Support",   icon: P("Info") },
+      { id: "reports", label: "Reports", icon: P("Pie Chart") },
+      { id: "support", label: "Support", icon: P("Info") },
     ],
   },
   {
     label: "Account",
-    items: [
-      { id: "settings", label: "Settings", icon: P("Filters") },
-    ],
+    items: [{ id: "settings", label: "Settings", icon: P("Filters") }],
   },
 ];
 

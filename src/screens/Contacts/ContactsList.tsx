@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "../../components/Icon/Icon";
 import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
@@ -327,12 +328,32 @@ const V1Content: React.FC = () => (
                 <StatusDot status={contact.status} />
               </td>
               <td>
-                <button
-                  aria-label="More options"
-                  className="drp-btn drp-btn--ghost drp-btn--sm"
+                <div
+                  style={{ display: "flex", gap: "8px", alignItems: "center" }}
                 >
-                  ···
-                </button>
+                  <button
+                    aria-label="Edit contact"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+                  </button>
+                  <button
+                    aria-label="Delete contact"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -395,33 +416,47 @@ const V2Content: React.FC = () => (
               </td>
               <td>
                 <div className="drp-flex drp-items-center drp-gap-3">
-                  <button className="drp-btn drp-btn--outline drp-btn--sm">
-                    <svg
-                      width="14"
-                      height="14"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                    View and edit
+                  <button
+                    aria-label="View and edit contact"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon name="eye" size="sm" bg="var(--drp-purple-20)" />
                   </button>
                   <Toggle on={contact.accessOn} />
                 </div>
               </td>
               <td>
-                <button
-                  aria-label="More options"
-                  className="drp-btn drp-btn--ghost drp-btn--sm"
+                <div
+                  style={{ display: "flex", gap: "8px", alignItems: "center" }}
                 >
-                  ···
-                </button>
+                  <button
+                    aria-label="Edit contact"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+                  </button>
+                  <button
+                    aria-label="Delete contact"
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

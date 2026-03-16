@@ -25,7 +25,7 @@ export function CaseCard({
     <div
       className={className}
       style={{
-        border: "3px solid var(--drp-black)",
+        border: "1px solid var(--drp-black)",
         background: "var(--drp-surface)",
         overflow: "hidden",
       }}
@@ -34,7 +34,7 @@ export function CaseCard({
         style={{
           height: "200px",
           background: imageColor,
-          borderBottom: "2px solid var(--drp-black)",
+          borderBottom: "1px solid var(--drp-black)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -58,7 +58,7 @@ export function CaseCard({
         >
           {stat}
         </p>
-        <p style={{ fontSize: "13px", marginBottom: "16px" }}>{statLabel}</p>
+        <p style={{ fontSize: "14px", marginBottom: "16px" }}>{statLabel}</p>
         <h3
           style={{
             fontFamily: "var(--drp-font-primary)",
@@ -69,7 +69,7 @@ export function CaseCard({
         >
           {title}
         </h3>
-        <p style={{ fontSize: "13px", color: "#666", lineHeight: 1.6 }}>
+        <p style={{ fontSize: "14px", color: "#666", lineHeight: 1.6 }}>
           {description}
         </p>
       </div>

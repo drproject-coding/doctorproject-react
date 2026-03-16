@@ -54,10 +54,14 @@ export function Skeleton({
 
   return (
     <>
-      <div className={className} style={baseStyle} aria-hidden="true" />
+      <div
+        className={`drp-skeleton-pulse${className ? ` ${className}` : ""}`}
+        style={baseStyle}
+        aria-hidden="true"
+      />
       <style>{`
         @keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        @media (prefers-reduced-motion: reduce) { .drp-skeleton-shimmer { animation: none !important; } }
+        @media (prefers-reduced-motion: reduce) { .drp-skeleton-pulse { animation: none !important; } }
       `}</style>
     </>
   );

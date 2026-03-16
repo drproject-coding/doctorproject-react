@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Icon } from "../../../components/Icon/Icon";
 import { Tag } from "../../../components/Tag/Tag";
 import { ProgressBar } from "../../../components/ProgressBar/ProgressBar";
 import { Pagination } from "../../../components/Pagination/Pagination";
@@ -506,9 +507,29 @@ const ProductCard: React.FC<{ product: TTProduct }> = ({ product }) => (
       <span className="drp-text drp-text--sm drp-text--bold">
         ${product.price}
       </span>
-      <div className="drp-flex drp-gap-1">
-        <button className="drp-btn drp-btn--outline drp-btn--sm">View</button>
-        <button className="drp-btn drp-btn--ghost drp-btn--sm">···</button>
+      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+        <button
+          aria-label="View product"
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+          }}
+        >
+          <Icon name="eye" size="sm" bg="var(--drp-purple-20)" />
+        </button>
+        <button
+          aria-label="Edit product"
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+          }}
+        >
+          <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+        </button>
       </div>
     </div>
   </div>

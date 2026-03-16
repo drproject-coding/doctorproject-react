@@ -15,14 +15,28 @@ export interface TableProps<T> {
 }
 
 /**
- * Data table with typed columns and optional custom cell rendering — use the `render` function on a column to display Badges, Buttons, or other components instead of plain text.
+ * Data table with typed columns and optional custom cell rendering.
+ *
+ * For row actions (edit, delete, view), use `<Icon size="sm">` wrapped in a plain `<button>` —
+ * never use "..." or text-label buttons. This keeps action columns compact and visually consistent.
+ *
  * @example
+ * // Status badge + icon action buttons
  * <Table
  *   aria-label="Recent appointments"
  *   columns={[
  *     { key: "patient", header: "Patient" },
- *     { key: "date", header: "Date" },
  *     { key: "status", header: "Status", render: (row) => <Badge variant="mint">{row.status}</Badge> },
+ *     { key: "actions", header: "Actions", render: (row) => (
+ *       <div style={{ display: "flex", gap: 8 }}>
+ *         <button aria-label="Edit" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+ *         </button>
+ *         <button aria-label="Delete" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+ *         </button>
+ *       </div>
+ *     )},
  *   ]}
  *   data={appointments}
  * />

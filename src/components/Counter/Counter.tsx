@@ -37,6 +37,7 @@ export function Counter({
     <div className="drp-counter">
       <button
         className="drp-counter__btn"
+        aria-label="Decrease"
         onClick={() => update(value - 1)}
         disabled={value <= min}
       >
@@ -53,6 +54,7 @@ export function Counter({
       />
       <button
         className="drp-counter__btn"
+        aria-label="Increase"
         onClick={() => update(value + 1)}
         disabled={value >= max}
       >

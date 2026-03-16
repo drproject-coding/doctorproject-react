@@ -28,8 +28,8 @@ export function Footer({
       style={{
         background: "var(--drp-black)",
         color: "var(--drp-text-inverse)",
-        padding: "var(--drp-space-16, 64px) 0",
-        borderTop: "3px solid var(--drp-purple)",
+        padding: "var(--drp-space-8, 32px) 0",
+        borderTop: "1px solid var(--drp-purple)",
       }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }}>
@@ -37,16 +37,16 @@ export function Footer({
           style={{
             display: "grid",
             gridTemplateColumns: `2fr ${columns.map(() => "1fr").join(" ")}`,
-            gap: "32px",
+            gap: "24px",
           }}
         >
           <div>
             <p
               style={{
                 fontFamily: "var(--drp-font-primary)",
-                fontSize: "2rem",
+                fontSize: "1.25rem",
                 fontWeight: 800,
-                marginBottom: "16px",
+                marginBottom: "8px",
               }}
             >
               {brand}
@@ -110,8 +110,8 @@ export function Footer({
         {(copyright || bottomLinks) && (
           <div
             style={{
-              marginTop: "48px",
-              paddingTop: "24px",
+              marginTop: "24px",
+              paddingTop: "16px",
               borderTop: "var(--drp-border-thin)",
               display: "flex",
               justifyContent: "space-between",

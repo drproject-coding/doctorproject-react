@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Icon } from "../../components/Icon/Icon";
 import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
@@ -16,12 +17,38 @@ const CalendarNav: React.FC<{
     style={{ padding: "var(--drp-space-4) var(--drp-space-6)" }}
   >
     <div className="drp-flex drp-items-center drp-gap-3">
-      <div className="drp-btn-group">
-        <button className="drp-btn drp-btn--sm drp-btn--outline">
-          &#8249;
+      <div className="drp-flex drp-gap-1">
+        <button
+          style={{
+            background: "none",
+            border: "none",
+            padding: "10px",
+            minWidth: 44,
+            minHeight: 44,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          aria-label="Previous"
+        >
+          <Icon name="arrow-left" size="sm" />
         </button>
-        <button className="drp-btn drp-btn--sm drp-btn--outline">
-          &#8250;
+        <button
+          style={{
+            background: "none",
+            border: "none",
+            padding: "10px",
+            minWidth: 44,
+            minHeight: 44,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          aria-label="Next"
+        >
+          <Icon name="arrow-right" size="sm" />
         </button>
       </div>
       <span className="drp-h5">{dateLabel}</span>

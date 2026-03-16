@@ -59,7 +59,7 @@ export function EmptyState({
       {description && (
         <p
           style={{
-            fontSize: "13px",
+            fontSize: "14px",
             color: "var(--drp-text-secondary, #666)",
             maxWidth: "400px",
             margin: "0 auto 20px",

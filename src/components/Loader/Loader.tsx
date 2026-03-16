@@ -20,6 +20,8 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
 
   return (
     <div
+      role="status"
+      aria-label={label ?? "Loading"}
       className={className}
       style={{ display: "inline-flex", alignItems: "center", gap: "12px" }}
     >
@@ -29,11 +31,13 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
           height: dimension,
           border: `${borderWidth}px solid var(--drp-light-grey, #E0E0E0)`,
           borderTop: `${borderWidth}px solid var(--drp-purple)`,
+          borderRadius: "50%",
           animation: "drp-spin 0.8s linear infinite",
         }}
       />
       {label && (
         <span
+          aria-hidden="true"
           style={{
             fontFamily: "var(--drp-font-primary)",
             fontSize: "var(--drp-text-sm)",
@@ -45,7 +49,7 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
           {label}
         </span>
       )}
-      <style>{`@keyframes drp-spin { to { transform: rotate(360deg); } }`}</style>
+      <style>{`@keyframes drp-spin { to { transform: rotate(360deg); } } @media (prefers-reduced-motion: reduce) { [style*="drp-spin"] { animation: none !important; } }`}</style>
     </div>
   );
 }

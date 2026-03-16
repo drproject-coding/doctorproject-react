@@ -33,7 +33,7 @@ export function PricingCard({
       className={classes}
       style={{
         padding: "var(--drp-space-8)",
-        border: "3px solid var(--drp-black)",
+        border: "1px solid var(--drp-black)",
         background: featured ? "var(--drp-purple)" : "var(--drp-surface)",
         color: featured ? "#FFFFFF" : "inherit",
         textAlign: "center",
@@ -54,7 +54,7 @@ export function PricingCard({
             fontSize: "11px",
             fontWeight: 700,
             textTransform: "uppercase",
-            border: "2px solid var(--drp-black)",
+            border: "1px solid var(--drp-black)",
           }}
         >
           {badge}

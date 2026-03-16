@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "../../../components/Icon/Icon";
 import { Pictogram } from "../../../components/Pictogram/Pictogram";
 
 export type TTNavId =
@@ -194,10 +195,15 @@ export const ToolsTrackerSidebar: React.FC<ToolsTrackerSidebarProps> = ({
         <p className="drp-text drp-text--xs drp-text--muted">{user.role}</p>
       </div>
       <button
-        className="drp-btn drp-btn--ghost drp-btn--sm"
         aria-label="More options"
+        style={{
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+        }}
       >
-        ···
+        <Icon name="more" size="sm" bg="var(--drp-purple-20)" />
       </button>
     </div>
   </aside>

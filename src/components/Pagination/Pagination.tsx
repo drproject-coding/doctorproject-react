@@ -38,7 +38,7 @@ export function Pagination({
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <nav aria-label="Pagination">
+    <nav className="drp-pagination__nav" aria-label="Pagination">
       <div className={containerClasses}>
         <button
           className="drp-pagination__btn"

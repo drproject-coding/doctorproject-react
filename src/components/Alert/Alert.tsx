@@ -53,8 +53,8 @@ export function Alert({
       style={{
         padding: "16px 20px",
         background: styles.bg,
-        border: `2px solid var(--drp-black)`,
-        borderLeft: `4px solid ${styles.border}`,
+        border: `1px solid var(--drp-black)`,
+        borderLeft: `2px solid ${styles.border}`,
         display: "flex",
         gap: "12px",
         alignItems: "flex-start",
@@ -79,7 +79,7 @@ export function Alert({
             {title}
           </p>
         )}
-        <div style={{ fontSize: "13px", lineHeight: 1.5 }}>{children}</div>
+        <div style={{ fontSize: "14px", lineHeight: 1.5 }}>{children}</div>
       </div>
       {onClose && (
         <button

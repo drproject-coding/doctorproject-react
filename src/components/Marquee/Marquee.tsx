@@ -21,7 +21,10 @@ export function Marquee({
     <div className={`drp-marquee ${className}`}>
       <div
         className="drp-marquee__track"
-        style={{ animationDuration: `${speed}s` }}
+        style={{
+          animationDuration: `${speed}s`,
+          animationPlayState: "var(--drp-marquee-play-state, running)",
+        }}
       >
         {doubled.map((text, i) => (
           <span key={i} className="drp-marquee__item">

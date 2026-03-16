@@ -35,7 +35,7 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     name: { control: "select", options: allIconNames },
     size: { control: "select", options: [undefined, "sm", "md", "lg"] },
-    color: { control: "color" },
+    bg: { control: "color" },
   },
 };
 export default meta;
@@ -46,10 +46,10 @@ export const Small: Story = { args: { name: "search", size: "sm" } };
 export const Medium: Story = { args: { name: "search", size: "md" } };
 export const Large: Story = { args: { name: "search", size: "lg" } };
 export const Purple: Story = {
-  args: { name: "bell", size: "lg", color: "#631DED" },
+  args: { name: "bell", size: "lg", bg: "var(--drp-purple)" },
 };
 export const Orange: Story = {
-  args: { name: "mail", size: "lg", color: "#FF6C01" },
+  args: { name: "mail", size: "lg", bg: "var(--drp-orange)" },
 };
 
 export const AllIcons: Story = {
@@ -105,7 +105,7 @@ export const Sizes: Story = {
         >
           <Icon name="settings" size={size} />
           <span style={{ fontFamily: "monospace", fontSize: "10px" }}>
-            {size} ({size === "sm" ? 16 : size === "md" ? 20 : 24}px)
+            {size} ({size === "sm" ? 24 : size === "md" ? 32 : 48}px box)
           </span>
         </div>
       ))}
@@ -116,13 +116,13 @@ export const Sizes: Story = {
 export const DoctorProjectColors: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-      <Icon name="dashboard" size="lg" color="#631DED" />
-      <Icon name="analytics" size="lg" color="#FF6C01" />
-      <Icon name="users" size="lg" color="#121212" />
-      <Icon name="orders" size="lg" color="#98E9AB" />
-      <Icon name="products" size="lg" color="#E99898" />
-      <Icon name="settings" size="lg" color="#FAE8A4" />
-      <Icon name="search" size="lg" color="#666666" />
+      <Icon name="dashboard" size="lg" bg="var(--drp-purple)" />
+      <Icon name="analytics" size="lg" bg="var(--drp-orange)" />
+      <Icon name="users" size="lg" bg="var(--drp-mint)" />
+      <Icon name="orders" size="lg" bg="var(--drp-pink)" />
+      <Icon name="products" size="lg" bg="var(--drp-yellow)" />
+      <Icon name="settings" size="lg" bg="var(--drp-cream)" />
+      <Icon name="search" size="lg" bg="var(--drp-purple-20)" />
     </div>
   ),
 };

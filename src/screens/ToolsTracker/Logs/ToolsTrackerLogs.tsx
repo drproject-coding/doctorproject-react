@@ -4,7 +4,6 @@ import { ToolsTrackerFooter } from "../shared/ToolsTrackerFooter";
 import { TopBar } from "../../../components/TopBar/TopBar";
 import { Button } from "../../../components/Button/Button";
 import { Tag } from "../../../components/Tag/Tag";
-import { Pagination } from "../../../components/Pagination/Pagination";
 
 /* =========================================================================== */
 /* Types                                                                         */
@@ -368,8 +367,6 @@ const LogRow = ({ entry }: { entry: LogEntry }) => {
 /* Log Container                                                                 */
 /* =========================================================================== */
 
-const PAGE_SIZE = 12;
-
 const LogContainer = ({
   logs,
   isLoading,
@@ -377,10 +374,6 @@ const LogContainer = ({
   logs: LogEntry[];
   isLoading?: boolean;
 }) => {
-  const [page, setPage] = useState(1);
-  const totalPages = Math.max(1, Math.ceil(logs.length / PAGE_SIZE));
-  const paged = logs.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-
   return (
     <div
       style={{
@@ -438,25 +431,9 @@ const LogContainer = ({
         </div>
       ) : (
         <>
-          {paged.map((entry) => (
+          {logs.map((entry) => (
             <LogRow key={entry.id} entry={entry} />
           ))}
-          {totalPages > 1 && (
-            <div
-              style={{
-                padding: "10px 16px",
-                borderTop: "1px solid #e5e7eb",
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Pagination
-                currentPage={page}
-                totalPages={totalPages}
-                onPageChange={setPage}
-              />
-            </div>
-          )}
         </>
       )}
     </div>

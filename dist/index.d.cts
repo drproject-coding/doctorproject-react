@@ -38,15 +38,29 @@ interface TextProps {
  */
 declare function Text({ size, weight, muted, secondary, as: Tag, children, className, }: TextProps): react_jsx_runtime.JSX.Element;
 
-type IconName = "dashboard" | "analytics" | "users" | "orders" | "products" | "settings" | "search" | "bell" | "mail" | "calendar" | "check" | "close" | "plus" | "minus" | "arrow-left" | "arrow-right" | "arrow-up" | "arrow-down" | "edit" | "trash" | "eye" | "eye-off" | "filter" | "download";
+type IconName = "dashboard" | "analytics" | "users" | "orders" | "products" | "settings" | "search" | "bell" | "mail" | "calendar" | "check" | "close" | "plus" | "minus" | "arrow-left" | "arrow-right" | "arrow-up" | "arrow-down" | "edit" | "trash" | "eye" | "eye-off" | "filter" | "download" | "more";
 type IconSize = "sm" | "md" | "lg";
 interface IconProps {
     name: IconName;
     size?: IconSize;
-    color?: string;
+    /** Box background color. Defaults to var(--drp-mint). */
+    bg?: string;
     className?: string;
 }
-declare function Icon({ name, size, color, className, }: IconProps): react_jsx_runtime.JSX.Element;
+/**
+ * Brutalist functional icon — black filled icon inside a colored square with black border and offset shadow.
+ * Matches the Pictogram design language: flat colored box, 1px black border, hard offset shadow, black icon.
+ *
+ * Use `size="sm"` (24px box) in tight UI, `size="md"` (32px box) as default,
+ * and `size="lg"` (48px box) in navigation or feature contexts.
+ * Use `bg` to set the box background color (defaults to var(--drp-mint)).
+ *
+ * @example
+ * <Icon name="search" />
+ * <Icon name="trash" bg="var(--drp-pink)" />
+ * <Icon name="check" size="lg" bg="var(--drp-purple)" />
+ */
+declare function Icon({ name, size, bg, className, }: IconProps): react_jsx_runtime.JSX.Element;
 
 type ButtonVariant = "primary" | "outline" | "ghost" | "ghost-bordered" | "danger" | "secondary" | "dark";
 type ButtonSize = "sm" | "lg";
@@ -369,14 +383,28 @@ interface TableProps<T> {
     caption?: string;
 }
 /**
- * Data table with typed columns and optional custom cell rendering — use the `render` function on a column to display Badges, Buttons, or other components instead of plain text.
+ * Data table with typed columns and optional custom cell rendering.
+ *
+ * For row actions (edit, delete, view), use `<Icon size="sm">` wrapped in a plain `<button>` —
+ * never use "..." or text-label buttons. This keeps action columns compact and visually consistent.
+ *
  * @example
+ * // Status badge + icon action buttons
  * <Table
  *   aria-label="Recent appointments"
  *   columns={[
  *     { key: "patient", header: "Patient" },
- *     { key: "date", header: "Date" },
  *     { key: "status", header: "Status", render: (row) => <Badge variant="mint">{row.status}</Badge> },
+ *     { key: "actions", header: "Actions", render: (row) => (
+ *       <div style={{ display: "flex", gap: 8 }}>
+ *         <button aria-label="Edit" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+ *         </button>
+ *         <button aria-label="Delete" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+ *         </button>
+ *       </div>
+ *     )},
  *   ]}
  *   data={appointments}
  * />

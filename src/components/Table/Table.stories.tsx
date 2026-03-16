@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "./Table";
+import { Icon } from "../Icon/Icon";
 import { users } from "../../data/fake";
 
 const meta: Meta<typeof Table> = {
@@ -21,6 +22,55 @@ export const Default: Story = {
     ],
     data: users.slice(0, 8),
   },
+};
+
+/**
+ * Use Icon components (size="sm") for table row actions — never use "..." buttons.
+ * Wrap each Icon in a plain <button> with aria-label for accessibility.
+ */
+export const WithActions: Story = {
+  render: () => (
+    <Table
+      columns={[
+        { key: "name", header: "Name" },
+        { key: "email", header: "Email" },
+        { key: "role", header: "Role" },
+        {
+          key: "actions",
+          header: "Actions",
+          render: (row) => (
+            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+              <button
+                aria-label={`Edit ${row.name}`}
+                onClick={() => alert(`Edit: ${row.name}`)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                }}
+              >
+                <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+              </button>
+              <button
+                aria-label={`Delete ${row.name}`}
+                onClick={() => alert(`Delete: ${row.name}`)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                }}
+              >
+                <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+              </button>
+            </div>
+          ),
+        },
+      ]}
+      data={users.slice(0, 6)}
+    />
+  ),
 };
 
 export const WithCustomRender: Story = {

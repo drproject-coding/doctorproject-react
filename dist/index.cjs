@@ -146,11 +146,14 @@ function Heading({
 }) {
   const Tag2 = `h${level}`;
   const classes = [`drp-h${level}`, className].filter(Boolean).join(" ");
-  const style = uppercase ? {
-    textTransform: "uppercase",
-    letterSpacing: "var(--drp-tracking-caps)",
-    fontWeight: "var(--drp-weight-heavy)"
-  } : {};
+  const style = {
+    textWrap: "balance",
+    ...uppercase && {
+      textTransform: "uppercase",
+      letterSpacing: "var(--drp-tracking-caps)",
+      fontWeight: "var(--drp-weight-heavy)"
+    }
+  };
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag2, { className: classes, style, children });
 }
 
@@ -189,54 +192,75 @@ function Text({
 
 // src/components/Icon/Icon.tsx
 var import_jsx_runtime3 = require("react/jsx-runtime");
-var sizeMap = { sm: 16, md: 20, lg: 24 };
+var outerSizeMap = { sm: 24, md: 32, lg: 48 };
+var innerSizeMap = { sm: 12, md: 16, lg: 24 };
+var shadowMap = { sm: 2, md: 3, lg: 4 };
+var borderMap = { sm: 1, md: 2, lg: 2 };
 var iconPaths = {
-  dashboard: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4",
-  analytics: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m2 0v-4a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-  users: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
-  orders: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
-  products: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
-  settings: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066zM15 12a3 3 0 11-6 0 3 3 0 016 0z",
-  search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
-  bell: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
-  mail: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-  calendar: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-  check: "M5 13l4 4L19 7",
-  close: "M6 18L18 6M6 6l12 12",
-  plus: "M12 4v16m8-8H4",
-  minus: "M20 12H4",
-  "arrow-left": "M19 12H5m7-7l-7 7 7 7",
-  "arrow-right": "M5 12h14m-7-7l7 7-7 7",
-  "arrow-up": "M12 19V5m-7 7l7-7 7 7",
-  "arrow-down": "M12 5v14m-7-7l7 7 7-7",
-  edit: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
-  trash: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
-  eye: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
-  "eye-off": "M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L6.59 6.59m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a9.97 9.97 0 01-4.132 5.411m0 0L21 21",
-  filter: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z",
-  download: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+  dashboard: "M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z",
+  analytics: "M4 14h4v6H4v-6zm6-6h4v12h-4V8zm6-4h4v16h-4V4z",
+  users: "M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5C23 14.17 18.33 13 16 13z",
+  orders: "M3 5v14h18V5H3zm16 12H5V9h14v8zm0-10H5V7h14v2zM8 13H7v-2h1v2zm0 4H7v-2h1v2zm9-4h-7v-2h7v2zm0 4h-7v-2h7v2z",
+  products: "M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-1.5 1.5L20.46 12H17V9.5h1.5zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z",
+  settings: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54A.484.484 0 0014 3h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.81 9.47c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.21.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z",
+  search: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z",
+  bell: "M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z",
+  mail: "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
+  calendar: "M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z",
+  check: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z",
+  close: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z",
+  plus: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z",
+  minus: "M19 13H5v-2h14v2z",
+  "arrow-left": "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z",
+  "arrow-right": "M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z",
+  "arrow-up": "M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8z",
+  "arrow-down": "M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8z",
+  edit: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z",
+  trash: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z",
+  eye: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z",
+  "eye-off": "M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75C21.27 7.61 17 4.5 12 4.5c-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z",
+  filter: "M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z",
+  download: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z",
+  more: "M3 10.5h3v3H3v-3zm7.5 0h3v3h-3v-3zm7.5 0h3v3h-3v-3z"
 };
 function Icon({
   name,
   size = "md",
-  color = "currentColor",
+  bg = "var(--drp-mint)",
   className = ""
 }) {
-  const px = sizeMap[size];
+  const outer = outerSizeMap[size];
+  const inner = innerSizeMap[size];
+  const shadow = shadowMap[size];
+  const border = borderMap[size];
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-    "svg",
+    "span",
     {
-      width: px,
-      height: px,
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: color,
-      strokeWidth: 2,
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
+      style: {
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: outer,
+        height: outer,
+        background: bg,
+        border: `${border}px solid #000000`,
+        boxShadow: `${shadow}px ${shadow}px 0 0 #000000`,
+        flexShrink: 0,
+        borderRadius: 0
+      },
       className: className || void 0,
       "aria-hidden": "true",
-      children: iconPaths[name].split(" M").map((segment, i2) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("path", { d: i2 === 0 ? segment : `M${segment}` }, i2))
+      children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+        "svg",
+        {
+          width: inner,
+          height: inner,
+          viewBox: "0 0 24 24",
+          fill: "#000000",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("path", { d: iconPaths[name] })
+        }
+      )
     }
   );
 }
@@ -434,6 +458,7 @@ function Counter({
       "button",
       {
         className: "drp-counter__btn",
+        "aria-label": "Decrease",
         onClick: () => update(value - 1),
         disabled: value <= min,
         children: "\u2212"
@@ -455,6 +480,7 @@ function Counter({
       "button",
       {
         className: "drp-counter__btn",
+        "aria-label": "Increase",
         onClick: () => update(value + 1),
         disabled: value >= max,
         children: "+"
@@ -1543,7 +1569,7 @@ function Pagination({
     className
   ].filter(Boolean).join(" ");
   const pages = Array.from({ length: totalPages }, (_3, i2) => i2 + 1);
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("nav", { "aria-label": "Pagination", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: containerClasses, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("nav", { className: "drp-pagination__nav", "aria-label": "Pagination", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: containerClasses, children: [
     /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
       "button",
       {
@@ -1832,7 +1858,10 @@ function Marquee({
     "div",
     {
       className: "drp-marquee__track",
-      style: { animationDuration: `${speed}s` },
+      style: {
+        animationDuration: `${speed}s`,
+        animationPlayState: "var(--drp-marquee-play-state, running)"
+      },
       children: doubled.map((text, i2) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: "drp-marquee__item", children: text }, i2))
     }
   ) });
@@ -1910,7 +1939,7 @@ function PricingCard({
       className: classes,
       style: {
         padding: "var(--drp-space-8)",
-        border: "3px solid var(--drp-black)",
+        border: "1px solid var(--drp-black)",
         background: featured ? "var(--drp-purple)" : "var(--drp-surface)",
         color: featured ? "#FFFFFF" : "inherit",
         textAlign: "center",
@@ -1932,7 +1961,7 @@ function PricingCard({
               fontSize: "11px",
               fontWeight: 700,
               textTransform: "uppercase",
-              border: "2px solid var(--drp-black)"
+              border: "1px solid var(--drp-black)"
             },
             children: badge
           }
@@ -2037,7 +2066,7 @@ function CaseCard({
     {
       className,
       style: {
-        border: "3px solid var(--drp-black)",
+        border: "1px solid var(--drp-black)",
         background: "var(--drp-surface)",
         overflow: "hidden"
       },
@@ -2048,7 +2077,7 @@ function CaseCard({
             style: {
               height: "200px",
               background: imageColor,
-              borderBottom: "2px solid var(--drp-black)",
+              borderBottom: "1px solid var(--drp-black)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -2074,7 +2103,7 @@ function CaseCard({
               children: stat
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("p", { style: { fontSize: "13px", marginBottom: "16px" }, children: statLabel }),
+          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("p", { style: { fontSize: "14px", marginBottom: "16px" }, children: statLabel }),
           /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
             "h3",
             {
@@ -2087,7 +2116,7 @@ function CaseCard({
               children: title
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("p", { style: { fontSize: "13px", color: "#666", lineHeight: 1.6 }, children: description })
+          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("p", { style: { fontSize: "14px", color: "#666", lineHeight: 1.6 }, children: description })
         ] })
       ]
     }
@@ -2111,8 +2140,8 @@ function Footer({
       style: {
         background: "var(--drp-black)",
         color: "var(--drp-text-inverse)",
-        padding: "var(--drp-space-16, 64px) 0",
-        borderTop: "3px solid var(--drp-purple)"
+        padding: "var(--drp-space-8, 32px) 0",
+        borderTop: "1px solid var(--drp-purple)"
       },
       children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
         /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
@@ -2121,7 +2150,7 @@ function Footer({
             style: {
               display: "grid",
               gridTemplateColumns: `2fr ${columns.map(() => "1fr").join(" ")}`,
-              gap: "32px"
+              gap: "24px"
             },
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { children: [
@@ -2130,9 +2159,9 @@ function Footer({
                   {
                     style: {
                       fontFamily: "var(--drp-font-primary)",
-                      fontSize: "2rem",
+                      fontSize: "1.25rem",
                       fontWeight: 800,
-                      marginBottom: "16px"
+                      marginBottom: "8px"
                     },
                     children: brand
                   }
@@ -2199,8 +2228,8 @@ function Footer({
           "div",
           {
             style: {
-              marginTop: "48px",
-              paddingTop: "24px",
+              marginTop: "24px",
+              paddingTop: "16px",
               borderTop: "var(--drp-border-thin)",
               display: "flex",
               justifyContent: "space-between",
@@ -2280,6 +2309,8 @@ function Loader({ size, label, className = "" }) {
   return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
     "div",
     {
+      role: "status",
+      "aria-label": label ?? "Loading",
       className,
       style: { display: "inline-flex", alignItems: "center", gap: "12px" },
       children: [
@@ -2291,6 +2322,7 @@ function Loader({ size, label, className = "" }) {
               height: dimension,
               border: `${borderWidth}px solid var(--drp-light-grey, #E0E0E0)`,
               borderTop: `${borderWidth}px solid var(--drp-purple)`,
+              borderRadius: "50%",
               animation: "drp-spin 0.8s linear infinite"
             }
           }
@@ -2298,6 +2330,7 @@ function Loader({ size, label, className = "" }) {
         label && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
           "span",
           {
+            "aria-hidden": "true",
             style: {
               fontFamily: "var(--drp-font-primary)",
               fontSize: "var(--drp-text-sm)",
@@ -2308,7 +2341,7 @@ function Loader({ size, label, className = "" }) {
             children: label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
+        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } } @media (prefers-reduced-motion: reduce) { [style*="drp-spin"] { animation: none !important; } }` })
       ]
     }
   );
@@ -2347,10 +2380,17 @@ function Skeleton({
     });
   }
   return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className, style: baseStyle, "aria-hidden": "true" }),
+    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      "div",
+      {
+        className: `drp-skeleton-pulse${className ? ` ${className}` : ""}`,
+        style: baseStyle,
+        "aria-hidden": "true"
+      }
+    ),
     /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("style", { children: `
         @keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        @media (prefers-reduced-motion: reduce) { .drp-skeleton-shimmer { animation: none !important; } }
+        @media (prefers-reduced-motion: reduce) { .drp-skeleton-pulse { animation: none !important; } }
       ` })
   ] });
 }
@@ -2387,8 +2427,8 @@ function Alert({
       style: {
         padding: "16px 20px",
         background: styles.bg,
-        border: `2px solid var(--drp-black)`,
-        borderLeft: `4px solid ${styles.border}`,
+        border: `1px solid var(--drp-black)`,
+        borderLeft: `2px solid ${styles.border}`,
         display: "flex",
         gap: "12px",
         alignItems: "flex-start"
@@ -2415,7 +2455,7 @@ function Alert({
               children: title
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { style: { fontSize: "13px", lineHeight: 1.5 }, children })
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { style: { fontSize: "14px", lineHeight: 1.5 }, children })
         ] }),
         onClose && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
           "button",
@@ -2488,7 +2528,7 @@ function EmptyState({
           "p",
           {
             style: {
-              fontSize: "13px",
+              fontSize: "14px",
               color: "var(--drp-text-secondary, #666)",
               maxWidth: "400px",
               margin: "0 auto 20px"
@@ -2815,13 +2855,13 @@ var BASE_SECTIONS = [
       { id: "products", label: "Products", icon: P("Basket") },
       { id: "customers", label: "Customers", icon: P("Apps") },
       { id: "contacts", label: "Contacts", icon: P("Message") },
-      { id: "accounts", label: "Accounts", icon: P("Credit card") },
+      { id: "accounts", label: "Accounts", icon: P("Folder") },
       { id: "transactions", label: "Transactions", icon: P("Up arrow") },
       { id: "sales", label: "Sales", icon: P("Analytics") },
       {
         id: "payments",
         label: "Payments",
-        icon: P("Folder"),
+        icon: P("Credit card"),
         badge: 14,
         badgeVariant: "green"
       }
@@ -2845,9 +2885,7 @@ var BASE_SECTIONS = [
   },
   {
     label: "Account",
-    items: [
-      { id: "settings", label: "Settings", icon: P("Filters") }
-    ]
+    items: [{ id: "settings", label: "Settings", icon: P("Filters") }]
   }
 ];
 function useAutoCollapse() {
@@ -7794,12 +7832,38 @@ var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(StatusDot2, { status: contact.status }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-            "button",
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
+            "div",
             {
-              "aria-label": "More options",
-              className: "drp-btn drp-btn--ghost drp-btn--sm",
-              children: "\xB7\xB7\xB7"
+              style: { display: "flex", gap: "8px", alignItems: "center" },
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                  "button",
+                  {
+                    "aria-label": "Edit contact",
+                    style: {
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer"
+                    },
+                    children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Icon, { name: "edit", size: "sm", bg: "var(--drp-yellow)" })
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                  "button",
+                  {
+                    "aria-label": "Delete contact",
+                    style: {
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer"
+                    },
+                    children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Icon, { name: "trash", size: "sm", bg: "var(--drp-pink)" })
+                  }
+                )
+              ]
             }
           ) })
         ] }, contact.name)) })
@@ -7850,36 +7914,53 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-                "svg",
-                {
-                  width: "14",
-                  height: "14",
-                  fill: "none",
-                  viewBox: "0 0 24 24",
-                  stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-                    "path",
-                    {
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeWidth: 2,
-                      d: "M19 9l-7 7-7-7"
-                    }
-                  )
-                }
-              ),
-              "View and edit"
-            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+              "button",
+              {
+                "aria-label": "View and edit contact",
+                style: {
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer"
+                },
+                children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Icon, { name: "eye", size: "sm", bg: "var(--drp-purple-20)" })
+              }
+            ),
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Toggle, { on: contact.accessOn })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-            "button",
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
+            "div",
             {
-              "aria-label": "More options",
-              className: "drp-btn drp-btn--ghost drp-btn--sm",
-              children: "\xB7\xB7\xB7"
+              style: { display: "flex", gap: "8px", alignItems: "center" },
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                  "button",
+                  {
+                    "aria-label": "Edit contact",
+                    style: {
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer"
+                    },
+                    children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Icon, { name: "edit", size: "sm", bg: "var(--drp-yellow)" })
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                  "button",
+                  {
+                    "aria-label": "Delete contact",
+                    style: {
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer"
+                    },
+                    children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Icon, { name: "trash", size: "sm", bg: "var(--drp-pink)" })
+                  }
+                )
+              ]
             }
           ) })
         ] }, contact.name)) })
@@ -11746,9 +11827,43 @@ var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ (0, imp
     style: { padding: "var(--drp-space-4) var(--drp-space-6)" },
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: "drp-btn-group", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u2039" }),
-          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u203A" })
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("div", { className: "drp-flex drp-gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+            "button",
+            {
+              style: {
+                background: "none",
+                border: "none",
+                padding: "10px",
+                minWidth: 44,
+                minHeight: 44,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
+              "aria-label": "Previous",
+              children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Icon, { name: "arrow-left", size: "sm" })
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+            "button",
+            {
+              style: {
+                background: "none",
+                border: "none",
+                padding: "10px",
+                minWidth: 44,
+                minHeight: 44,
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
+              "aria-label": "Next",
+              children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Icon, { name: "arrow-right", size: "sm" })
+            }
+          )
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime70.jsx)("span", { className: "drp-h5", children: dateLabel })
       ] }),
@@ -14336,9 +14451,14 @@ var ToolsTrackerSidebar = ({
             /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
               "button",
               {
-                className: "drp-btn drp-btn--ghost drp-btn--sm",
                 "aria-label": "More options",
-                children: "\xB7\xB7\xB7"
+                style: {
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer"
+                },
+                children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Icon, { name: "more", size: "sm", bg: "var(--drp-purple-20)" })
               }
             )
           ]
@@ -14882,9 +15002,33 @@ var ProductCard = ({ product }) => /* @__PURE__ */ (0, import_jsx_runtime79.jsxs
               "$",
               product.price
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)("div", { className: "drp-flex drp-gap-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime79.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "View" }),
-              /* @__PURE__ */ (0, import_jsx_runtime79.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" })
+            /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)("div", { style: { display: "flex", gap: "8px", alignItems: "center" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
+                "button",
+                {
+                  "aria-label": "View product",
+                  style: {
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer"
+                  },
+                  children: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Icon, { name: "eye", size: "sm", bg: "var(--drp-purple-20)" })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
+                "button",
+                {
+                  "aria-label": "Edit product",
+                  style: {
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer"
+                  },
+                  children: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Icon, { name: "edit", size: "sm", bg: "var(--drp-yellow)" })
+                }
+              )
             ] })
           ]
         }
@@ -19336,10 +19480,15 @@ var CardRow3 = ({ tx }) => /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(
       /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
         "button",
         {
-          className: "drp-btn drp-btn--ghost drp-btn--sm",
           "aria-label": "More options",
-          style: { color: "var(--drp-grey)", flexShrink: 0 },
-          children: "\xB7\xB7\xB7"
+          style: {
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            flexShrink: 0
+          },
+          children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Icon, { name: "more", size: "sm", bg: "var(--drp-purple-20)" })
         }
       )
     ]
@@ -19467,10 +19616,14 @@ var TableView = ({
         children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
           "button",
           {
-            className: "drp-btn drp-btn--ghost drp-btn--sm",
             "aria-label": "More options",
-            style: { color: "var(--drp-grey)" },
-            children: "\xB7\xB7\xB7"
+            style: {
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer"
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Icon, { name: "more", size: "sm", bg: "var(--drp-purple-20)" })
           }
         )
       }
@@ -24764,14 +24917,10 @@ var LogRow = ({ entry }) => {
     }
   );
 };
-var PAGE_SIZE2 = 12;
 var LogContainer = ({
   logs,
   isLoading
 }) => {
-  const [page, setPage] = (0, import_react45.useState)(1);
-  const totalPages = Math.max(1, Math.ceil(logs.length / PAGE_SIZE2));
-  const paged = logs.slice((page - 1) * PAGE_SIZE2, page * PAGE_SIZE2);
   return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
     "div",
     {
@@ -24828,28 +24977,7 @@ var LogContainer = ({
           },
           children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "No activity yet" })
         }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_jsx_runtime99.Fragment, { children: [
-        paged.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(LogRow, { entry }, entry.id)),
-        totalPages > 1 && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          "div",
-          {
-            style: {
-              padding: "10px 16px",
-              borderTop: "1px solid #e5e7eb",
-              display: "flex",
-              justifyContent: "flex-end"
-            },
-            children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-              Pagination,
-              {
-                currentPage: page,
-                totalPages,
-                onPageChange: setPage
-              }
-            )
-          }
-        )
-      ] })
+      ) : /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_jsx_runtime99.Fragment, { children: logs.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(LogRow, { entry }, entry.id)) })
     }
   );
 };

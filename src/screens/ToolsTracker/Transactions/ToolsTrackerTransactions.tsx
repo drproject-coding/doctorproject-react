@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { Icon } from "../../../components/Icon/Icon";
 import { ToolsTrackerSidebar } from "../shared/ToolsTrackerSidebar";
 import { ToolsTrackerFooter } from "../shared/ToolsTrackerFooter";
 import { TopBar } from "../../../components/TopBar/TopBar";
@@ -605,11 +606,16 @@ const CardRow: React.FC<{ tx: TTransaction }> = ({ tx }) => (
     </div>
 
     <button
-      className="drp-btn drp-btn--ghost drp-btn--sm"
       aria-label="More options"
-      style={{ color: "var(--drp-grey)", flexShrink: 0 }}
+      style={{
+        background: "none",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
+        flexShrink: 0,
+      }}
     >
-      ···
+      <Icon name="more" size="sm" bg="var(--drp-purple-20)" />
     </button>
   </div>
 );
@@ -729,11 +735,15 @@ const TableView: React.FC<{ transactions: TTransaction[] }> = ({
             style={{ padding: "var(--drp-space-3) var(--drp-space-4)" }}
           >
             <button
-              className="drp-btn drp-btn--ghost drp-btn--sm"
               aria-label="More options"
-              style={{ color: "var(--drp-grey)" }}
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+              }}
             >
-              ···
+              <Icon name="more" size="sm" bg="var(--drp-purple-20)" />
             </button>
           </td>
         </tr>

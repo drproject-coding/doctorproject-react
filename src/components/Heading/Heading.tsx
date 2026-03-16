@@ -25,13 +25,14 @@ export function Heading({
 
   const classes = [`drp-h${level}`, className].filter(Boolean).join(" ");
 
-  const style: CSSProperties = uppercase
-    ? {
-        textTransform: "uppercase",
-        letterSpacing: "var(--drp-tracking-caps)",
-        fontWeight: "var(--drp-weight-heavy)",
-      }
-    : {};
+  const style: CSSProperties = {
+    textWrap: "balance" as CSSProperties["textWrap"],
+    ...(uppercase && {
+      textTransform: "uppercase",
+      letterSpacing: "var(--drp-tracking-caps)",
+      fontWeight: "var(--drp-weight-heavy)",
+    }),
+  };
 
   return (
     <Tag className={classes} style={style}>
